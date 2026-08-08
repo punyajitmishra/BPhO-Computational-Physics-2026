@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\title{A Particle in a Box Obeys the Uncertainty Principle}
+\author{BPhO Computational Physics Challenge 2026}
+\date{}
+\begin{document}
+\maketitle
+
+For an infinite one-dimensional box of width $a$, the normalised stationary
+state is
+\[
+ \psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right),
+ \qquad 0<x<a.
+\]
+The corresponding energy is $E_n=n^2\pi^2\hbar^2/(2ma^2)$.  The probability
+density is symmetric about the centre of the box, therefore
+\[
+ \langle x\rangle=\frac{a}{2}.
+\]
+Direct integration gives
+\[
+ \langle x^2\rangle=a^2\left(\frac13-\frac{1}{2n^2\pi^2}\right),
+\]
+and consequently
+\[
+ \Delta x=a\sqrt{\frac1{12}-\frac{1}{2n^2\pi^2}}.
+\]
+
+The momentum expectation is zero because equal right- and left-moving parts
+make up the standing wave. Applying $\hat p=-i\hbar\,d/dx$ twice yields
+\[
+ \langle p^2\rangle=\left(\frac{n\pi\hbar}{a}\right)^2,
+ \qquad \Delta p=\frac{n\pi\hbar}{a}.
+\]
+Thus
+\[
+ \Delta x\Delta p=
+ \frac{n\pi\hbar}{2}\sqrt{\frac13-\frac{1}{2n^2\pi^2}}
+ =\frac{\hbar}{2}\sqrt{\frac{n^2\pi^2}{3}-1}.
+\]
+For $n=1$, this is $0.568\hbar$, already larger than the Heisenberg lower
+bound $\hbar/2$.  It increases with $n$, so every stationary state obeys
+$\Delta x\Delta p\geq\hbar/2$.  The accompanying program independently
+checks the analytical result using numerical integration.
+
+\begin{center}
+\includegraphics[width=0.82\linewidth]{task7_uncertainty_principle.png}
+\end{center}
+\end{document}
