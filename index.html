@@ -1,92 +1,1543 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BPhO Computational Physics 2026 · Museum</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>BPhO Computational Physics 2026</title>
+
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
 <div class="noise"></div>
+
 <header class="topbar">
-  <a class="brand" href="#home"><span class="brand-mark">∿</span><span>BPhO / <b>COMP PHYS 2026</b></span></a>
-  <div class="top-actions"><span id="progressLabel">01 / 10</span><button id="themeBtn" class="icon-btn" title="Toggle contrast">◐</button></div>
+
+    <a class="brand" href="#home">
+        <span class="brand-mark">∿</span>
+        <span>BPhO / <b>COMP PHYS 2026</b></span>
+    </a>
+
+    <div class="top-actions">
+        <span id="progressLabel">01 / 10</span>
+        <button id="themeBtn" class="icon-btn" title="Toggle contrast">◐</button>
+    </div>
+
 </header>
+
+
 <div class="app-shell">
-  <aside class="sidebar" id="sidebar">
-    <div class="side-intro"><span>EXHIBITION</span><h1>Quantum<br>in Motion</h1><p>A computational walkthrough of the 2026 challenge.</p></div>
-    <nav id="taskNav"></nav>
-    <div class="side-footer">BPhO Computational Physics<br>2026 · interactive archive</div>
-  </aside>
-  <main id="main">
-    <section class="hero section" id="home">
-      <div class="hero-grid"><div>
-        <p class="eyebrow">DIGITAL EXHIBITION · 10 TASKS</p>
-        <h2>Physics you can<br><em>touch.</em></h2>
-        <p class="hero-copy">Walk through every computational model in the BPhO Computational Physics 2026 challenge. Change a parameter, watch the model respond, then trace the mathematics back to the answer.</p>
-        <div class="hero-actions"><button class="primary" data-go="1">Enter the exhibition <span>→</span></button><a href="bpho_computational_physics_paper.pdf" target="_blank" class="ghost">Open challenge paper ↗</a></div>
-      </div><div class="hero-orbit"><div class="orbit-ring r1"></div><div class="orbit-ring r2"></div><div class="orbit-ring r3"></div><div class="orbit-core">10<br><small>EXHIBITS</small></div></div></div>
-      <div class="hero-foot"><span>01—10</span><span>Randomness → Quantum structure</span><span>2026</span></div>
-    </section>
 
-    <section class="section exhibit" id="task1" data-task="1"><div class="exhibit-head"><div><p class="eyebrow">EXHIBIT 01</p><h2>Random Walk</h2><p class="lede">A drunkard's path with no preferred direction. The surprising part is not the path. It is the statistics.</p></div><div class="formula-chip">⟨r²⟩ = Ns²</div></div>
-      <div class="grid-2"><div class="panel controls"><h3>Control the walk</h3><label>Steps N <output id="n1Out">500</output><input id="n1" type="range" min="20" max="1500" value="500"></label><label>Step size s <output id="s1Out">1.00</output><input id="s1" type="range" min="0.2" max="3" step="0.05" value="1"></label><label>Walkers <output id="w1Out">12</output><input id="w1" type="range" min="1" max="40" value="12"></label><button class="secondary" id="reroll1">↻ New random paths</button><div class="metric-row"><div><small>RMS distance</small><strong id="rms1">—</strong></div><div><small>Theory s√N</small><strong id="theory1">—</strong></div></div></div><div class="panel canvas-panel"><canvas id="canvas1"></canvas></div></div>
-      <div class="explain"><div><span class="step">01</span><h3>How the answer appears</h3></div><p>Each step has fixed length <b>s</b>, but its angle θ is uniformly distributed from 0 to 2π. The vector sum therefore has no preferred direction. Averaging over many walks makes the cross terms vanish, leaving <b>⟨r²⟩ = Ns²</b>, so the typical displacement grows only as <b>s√N</b>, not N.</p></div>
-    </section>
+    <aside class="sidebar" id="sidebar">
 
-    <section class="section exhibit" id="task2" data-task="2"><div class="exhibit-head"><div><p class="eyebrow">EXHIBIT 02</p><h2>Brownian Motion</h2><p class="lede">Many tiny collisions, one visible wandering particle.</p></div><div class="formula-chip">p<sub>before</sub> = p<sub>after</sub></div></div>
-      <div class="grid-2"><div class="panel controls"><h3>Collision chamber</h3><label>Small particles <output id="n2Out">90</output><input id="n2" type="range" min="20" max="180" value="90"></label><label>Mass ratio m/M <output id="ratio2Out">0.08</output><input id="ratio2" type="range" min="0.01" max="0.5" step="0.01" value="0.08"></label><label>Collision strength <output id="kick2Out">1.0</output><input id="kick2" type="range" min="0.2" max="2" step="0.1" value="1"></label><button class="secondary" id="run2">▶ Restart simulation</button><div class="metric-row"><div><small>Big-particle speed</small><strong id="speed2">0.00</strong></div><div><small>Elapsed</small><strong id="time2">0.0 s</strong></div></div></div><div class="panel canvas-panel"><canvas id="canvas2"></canvas></div></div>
-      <div class="explain"><div><span class="step">02</span><h3>What the code is modelling</h3></div><p>The small particles move with random headings and collide elastically with a larger particle. At a collision, momentum conservation updates the velocity component along the line of centres. The large particle therefore receives a sequence of tiny impulses and develops the irregular Brownian trajectory.</p></div>
-    </section>
+        <div class="side-intro">
+            <span>BPHO 2026</span>
 
-    <section class="section exhibit" id="task3" data-task="3"><div class="exhibit-head"><div><p class="eyebrow">EXHIBIT 03</p><h2>Black Bodies & Heat</h2><p class="lede">Temperature moves the peak. Quantum mechanics suppresses the classical low-temperature heat capacity.</p></div><div class="formula-chip">B(λ,T) = 2hc² / λ⁵(e<sup>hc/λkT</sup>−1)</div></div>
-      <div class="grid-2"><div class="panel controls"><h3>Planck spectrum</h3><label>Temperature <output id="t3Out">5000</output> K<input id="t3" type="range" min="2500" max="9000" step="100" value="5000"></label><label>Wavelength window <output id="win3Out">2500</output> nm<input id="win3" type="range" min="700" max="4000" step="100" value="2500"></label><div class="metric-row"><div><small>Wien peak</small><strong id="peak3">—</strong></div><div><small>Stefan trend</small><strong id="power3">T⁴</strong></div></div><div class="mini-note">The supplied task compares several temperatures. Move the slider to see the peak migrate according to Wien's law.</div></div><div class="panel"><canvas id="canvas3"></canvas></div></div>
-      <div class="explain"><div><span class="step">03</span><h3>From equation to curve</h3></div><p>For each wavelength λ, the program evaluates Planck's spectral radiance. Increasing T raises the overall intensity and shifts the maximum toward shorter wavelengths. The task also asks for Einstein's molar heat capacity model, <b>C<sub>V</sub> = 3R x²e<sup>x</sup>/(e<sup>x</sup>−1)²</b> with x = θ<sub>E</sub>/T; its high-temperature limit tends to the Dulong–Petit value 3R.</p></div>
-      <div class="image-strip"><figure><img src="Code/task3_planck_spectrum.png"><figcaption>Supplied computational output · Planck spectrum</figcaption></figure><figure><img src="Code/task3_einstein_heat_capacity.png"><figcaption>Supplied computational output · Einstein heat capacity</figcaption></figure></div>
-    </section>
+            <h1>
+                Computational<br>
+                Physics
+            </h1>
 
-    <section class="section exhibit" id="task4" data-task="4"><div class="exhibit-head"><div><p class="eyebrow">EXHIBIT 04</p><h2>Photoelectric Effect</h2><p class="lede">A photon pays the work function first. Whatever remains becomes electron kinetic energy.</p></div><div class="formula-chip">V<sub>s</sub> = hf/e − φ/e</div></div>
-      <div class="grid-2"><div class="panel controls"><h3>Choose a metal</h3><select id="metal4"><option value="2.10">Cesium · 2.10 eV</option><option value="2.28">Sodium · 2.28 eV</option><option value="4.30">Zinc · 4.30 eV</option><option value="4.70">Copper · 4.70 eV</option><option value="6.35">Platinum · 6.35 eV</option></select><label>Frequency <output id="f4Out">1.20</output> ×10¹⁵ Hz<input id="f4" type="range" min="4" max="20" step="0.1" value="12"></label><div class="metric-row"><div><small>Threshold</small><strong id="threshold4">—</strong></div><div><small>Stopping voltage</small><strong id="vs4">—</strong></div></div><div class="formula-box" id="photoEq4">hf = φ + K<sub>max</sub></div></div><div class="panel"><canvas id="canvas4"></canvas></div></div>
-      <div class="explain"><div><span class="step">04</span><h3>Why the graph is a straight line</h3></div><p>Einstein's equation gives <b>hf = φ + K<sub>max</sub></b>. Since the stopping voltage satisfies <b>K<sub>max</sub> = eV<sub>s</sub></b>, we get <b>V<sub>s</sub> = (h/e)f − φ/e</b>. The slope is universal; changing the metal changes the intercept because the work function changes.</p></div>
-    </section>
+            <p>
+                Interactive solutions and simulations for the 2026 challenge.
+            </p>
+        </div>
 
-    <section class="section exhibit" id="task5" data-task="5"><div class="exhibit-head"><div><p class="eyebrow">EXHIBIT 05</p><h2>Hydrogen · The Quantised Atom</h2><p class="lede">A staircase of allowed energies becomes a barcode of light.</p></div><div class="formula-chip">E<sub>n</sub> = −13.6/n² eV</div></div>
-      <div class="grid-2"><div class="panel controls"><h3>Choose a transition</h3><label>Initial level n<sub>i</sub> <output id="ni5Out">4</output><input id="ni5" type="range" min="2" max="8" value="4"></label><label>Final level n<sub>f</sub> <output id="nf5Out">2</output><input id="nf5" type="range" min="1" max="7" value="2"></label><div class="metric-row"><div><small>Photon energy</small><strong id="e5">—</strong></div><div><small>Wavelength</small><strong id="lambda5">—</strong></div></div><div class="level-readout" id="levels5"></div></div><div class="panel canvas-panel"><canvas id="canvas5"></canvas></div></div>
-      <div class="explain"><div><span class="step">05</span><h3>How Bohr gets the spectrum</h3></div><p>Coulomb attraction supplies the centripetal force and angular momentum is quantised: <b>mvr = nℏ</b>. Combining them gives <b>E<sub>n</sub> = −13.6057/n² eV</b>. A downward transition emits a photon with <b>E<sub>γ</sub> = E<sub>ni</sub> − E<sub>nf</sub> = hc/λ</b>. That single relation generates the hydrogen emission lines.</p></div>
-      <div class="image-strip single"><figure><img src="Code/task5_hydrogen_emission_spectrum.png"><figcaption>Supplied computational output · hydrogen emission spectrum</figcaption></figure></div>
-    </section>
+        <nav id="taskNav"></nav>
 
-    <section class="section exhibit" id="task6" data-task="6"><div class="exhibit-head"><div><p class="eyebrow">EXHIBIT 06</p><h2>Electron Diffraction</h2><p class="lede">Electrons arrive as rings because their de Broglie wavelength meets graphite's lattice spacing.</p></div><div class="formula-chip">nλ = 2d sinφ</div></div>
-      <div class="grid-2"><div class="panel controls"><h3>Diffraction tube</h3><label>Accelerating voltage <output id="v6Out">2.0</output> kV<input id="v6" type="range" min="1" max="5" step="0.1" value="2"></label><label>Graphite spacing <select id="d6"><option value="0.123">0.123 nm</option><option value="0.213">0.213 nm</option></select></label><div class="metric-row"><div><small>de Broglie λ</small><strong id="lambda6">—</strong></div><div><small>Visible rings</small><strong id="rings6">—</strong></div></div><div class="mini-note">The screen radius is r = 65 mm. Each allowed Bragg order produces a ring at x = r sin(2φ).</div></div><div class="panel"><canvas id="canvas6"></canvas></div></div>
-      <div class="explain"><div><span class="step">06</span><h3>The chain of reasoning</h3></div><p>Accelerating through V gives the electron momentum <b>p = √(2m<sub>e</sub>eV)</b>, so <b>λ = h/p</b>. Graphite then imposes Bragg's condition <b>nλ = 2d sinφ</b>. The spherical screen converts φ into a ring radius. Combining the equations predicts the straight-line check of <b>1/√V</b> against <b>sinφ</b>.</p></div>
-      <div class="image-strip single"><figure><img src="Code/task6_electron_diffraction.png"><figcaption>Supplied computational output · graphite diffraction model and validation</figcaption></figure></div>
-    </section>
+        <div class="side-footer">
+            BPhO Computational Physics<br>
+            2026
+        </div>
 
-    <section class="section exhibit" id="task7" data-task="7"><div class="exhibit-head"><div><p class="eyebrow">EXHIBIT 07</p><h2>Particle in a Box</h2><p class="lede">Boundary conditions quantise the wave. The square of the wavefunction tells us where the particle can be found.</p></div><div class="formula-chip">ψ<sub>n</sub> = √(2/a) sin(nπx/a)</div></div>
-      <div class="grid-2"><div class="panel controls"><h3>Quantum number</h3><label>n <output id="n7Out">3</output><input id="n7" type="range" min="1" max="8" value="3"></label><label>Box width <output id="a7Out">1.00</output> nm<input id="a7" type="range" min="0.5" max="3" step="0.05" value="1"></label><div class="metric-row"><div><small>Energy</small><strong id="energy7">—</strong></div><div><small>ΔxΔp / ℏ</small><strong id="unc7">—</strong></div></div></div><div class="panel"><canvas id="canvas7"></canvas></div></div>
-      <div class="explain"><div><span class="step">07</span><h3>Why only certain waves fit</h3></div><p>Infinite walls force ψ = 0 at both ends. The allowed standing waves therefore have <b>n = 1,2,3,…</b>. Substitution into Schrödinger's equation gives <b>E<sub>n</sub> = n²π²ℏ²/(2ma²)</b>. For the extension, the supplied solution gives <b>ΔxΔp/ℏ = ½√(n²π²/3 − 2)</b>, which always exceeds 1/2.</p></div>
-      <div class="image-strip"><figure><img src="Code/task7_particle_in_a_box.png"><figcaption>Supplied computational output · energy and probability density</figcaption></figure><figure><img src="Code/task7_uncertainty_principle.png"><figcaption>Supplied computational output · uncertainty verification</figcaption></figure></div>
-    </section>
+    </aside>
 
-    <section class="section exhibit" id="task8" data-task="8"><div class="exhibit-head"><div><p class="eyebrow">EXHIBIT 08</p><h2>Quantum Cryptography</h2><p class="lede">Two models predict different mismatch probabilities. The interference term is the tell.</p></div><div class="formula-chip">P<sub>Q</sub> = sin²(φ−θ)</div></div>
-      <div class="grid-2"><div class="panel controls"><h3>Set the analyser angles</h3><label>Alice θ <output id="theta8Out">−30</output>°<input id="theta8" type="range" min="-90" max="90" value="-30"></label><label>Bob φ <output id="phi8Out">30</output>°<input id="phi8" type="range" min="-90" max="90" value="30"></label><div class="metric-row"><div><small>Classical mismatch</small><strong id="class8">—</strong></div><div><small>Quantum mismatch</small><strong id="quant8">—</strong></div></div><div class="difference" id="diff8">—</div></div><div class="panel"><canvas id="canvas8"></canvas></div></div>
-      <div class="explain"><div><span class="step">08</span><h3>Where quantum mechanics diverges</h3></div><p>The classical hidden-variable model gives <b>1 − cos²θ cos²φ − sin²θ sin²φ</b>. The Copenhagen/quantum prediction is <b>sin²(φ−θ)</b>. Expanding the quantum expression reveals an interference cross-term <b>½ sin2θ sin2φ</b>, which is absent from the classical model. That is the computational signature the task asks you to expose.</p></div>
-    </section>
 
-    <section class="section exhibit" id="task9" data-task="9"><div class="exhibit-head"><div><p class="eyebrow">EXHIBIT 09</p><h2>Compton Scattering</h2><p class="lede">A photon leaves with a longer wavelength and an electron recoils with relativistic kinematics.</p></div><div class="formula-chip">Δλ = h/(m<sub>e</sub>c)(1−cosθ)</div></div>
-      <div class="grid-2"><div class="panel controls"><h3>Photon energy</h3><label>Incident photon <output id="e9Out">100</output> keV<input id="e9" type="range" min="10" max="1000" step="10" value="100"></label><label>Scattering angle θ <output id="theta9Out">90</output>°<input id="theta9" type="range" min="0" max="180" value="90"></label><div class="metric-row"><div><small>Fractional shift</small><strong id="shift9">—</strong></div><div><small>Electron speed</small><strong id="speed9">—</strong></div></div><div class="metric-row"><div><small>Recoil angle</small><strong id="recoil9">—</strong></div><div><small>Scattered photon</small><strong id="escat9">—</strong></div></div></div><div class="panel"><canvas id="canvas9"></canvas></div></div>
-      <div class="explain"><div><span class="step">09</span><h3>Why the wavelength changes</h3></div><p>Energy and momentum conservation for photon–electron scattering lead to <b>Δλ = h/(m<sub>e</sub>c)(1−cosθ)</b>. The app computes the scattered photon energy, then obtains the electron momentum from vector momentum conservation and its speed from the relativistic relation <b>γ = 1 + K/(m<sub>e</sub>c²)</b>.</p></div>
-      <div class="image-strip single"><figure><img src="Code/task9_compton_scattering.png"><figcaption>Supplied computational output · 100 keV Compton scattering</figcaption></figure></div>
-    </section>
+    <main id="main">
 
-    <section class="section exhibit" id="task10" data-task="10"><div class="exhibit-head"><div><p class="eyebrow">EXHIBIT 10</p><h2>Hydrogenic Orbitals</h2><p class="lede">The final room leaves the orbit behind: probability density becomes a three-dimensional object.</p></div><div class="formula-chip">ψ<sub>nlm</sub> = R<sub>nl</sub>Y<sub>l</sub><sup>m</sup></div></div>
-      <div class="grid-2"><div class="panel controls"><h3>Choose an orbital</h3><label>n <output id="n10Out">2</output><input id="n10" type="range" min="1" max="5" value="2"></label><label>l <output id="l10Out">1</output><input id="l10" type="range" min="0" max="1" value="1"></label><label>m <output id="m10Out">0</output><input id="m10" type="range" min="-1" max="1" value="0"></label><div class="orbital-name" id="orbitalName">2p, m=0</div><div class="mini-note">The supplied Task 10 code evaluates the hydrogenic radial function and spherical harmonic. The preview below uses the supplied rendered orbitals; the controls switch between physically valid labels and explain the quantum numbers.</div></div><div class="panel orbital-preview"><img id="orbitalImg" src="Code/task10_hydrogenic_orbitals_2d.png"><div class="preview-label" id="orbitalLabel">Supplied 2D density atlas · selected family preview</div></div></div>
-      <div class="explain"><div><span class="step">10</span><h3>Reading the quantum numbers</h3></div><p>The hydrogenic wavefunction separates into a radial part and a spherical harmonic: <b>ψ<sub>nlm</sub>(r,θ,φ) = R<sub>nl</sub>(r)Y<sub>l</sub><sup>m</sup>(θ,φ)</b>. The principal number n sets the energy scale and radial structure; l controls angular structure; m selects the magnetic component. The quantity visualised is <b>|ψ|²</b>, a probability density, not a literal planetary orbit.</p></div>
-      <div class="image-strip"><figure><img src="Code/task10_hydrogenic_orbitals_2d.png"><figcaption>Supplied 2D hydrogenic probability-density atlas</figcaption></figure><figure><img src="Code/task10_hydrogenic_orbitals_3d.png"><figcaption>Supplied 3D density visualisation</figcaption></figure></div>
-      <div class="finish"><span>END OF EXHIBITION</span><h3>Ten models.<br>One computational language.</h3><p>Randomness becomes statistics. Waves become spectra. Equations become simulations. The challenge is the bridge.</p><button class="primary" data-go="1">↺ Walk it again</button></div>
-    </section>
-  </main>
+
+        <!-- =====================================================
+             HOME
+             ===================================================== -->
+
+        <section class="hero section" id="home">
+
+            <div class="hero-grid">
+
+                <div>
+
+                    <p class="eyebrow">
+                        BPHO 2026 · COMPUTATIONAL PHYSICS
+                    </p>
+
+                    <h2>
+                        Computational<br>
+                        <em>Physics.</em>
+                    </h2>
+
+                    <p class="hero-copy">
+                        Interactive solutions and simulations for the
+                        2026 BPhO Computational Physics challenge.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <button class="primary" data-go="1">
+                            Start <span>→</span>
+                        </button>
+
+                        <a
+                            href="bpho_computational_physics_paper.pdf"
+                            target="_blank"
+                            class="ghost"
+                        >
+                            Open challenge paper ↗
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-orbit">
+
+                    <div class="orbit-ring r1"></div>
+                    <div class="orbit-ring r2"></div>
+                    <div class="orbit-ring r3"></div>
+
+                    <div class="orbit-core">
+                        10
+                        <br>
+                        <small>EXHIBITS</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-foot">
+                <span>01—10</span>
+                <span>Computational Physics</span>
+                <span>2026</span>
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TASK 01 — RANDOM WALK
+             ===================================================== -->
+
+        <section
+            class="section exhibit"
+            id="task1"
+            data-task="1"
+        >
+
+            <div class="exhibit-head">
+
+                <div>
+
+                    <p class="eyebrow">EXHIBIT 01</p>
+
+                    <h2>Random Walk</h2>
+
+                    <p class="lede">
+                        A two-dimensional random walk with fixed step length
+                        and uniformly distributed direction.
+                    </p>
+
+                </div>
+
+                <div class="formula-chip">
+                    ⟨r²⟩ = Ns²
+                </div>
+
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="panel controls">
+
+                    <h3>Control the walk</h3>
+
+                    <label>
+                        Steps N
+                        <output id="n1Out">500</output>
+
+                        <input
+                            id="n1"
+                            type="range"
+                            min="20"
+                            max="1500"
+                            value="500"
+                        >
+                    </label>
+
+
+                    <label>
+                        Step size s
+                        <output id="s1Out">1.00</output>
+
+                        <input
+                            id="s1"
+                            type="range"
+                            min="0.2"
+                            max="3"
+                            step="0.05"
+                            value="1"
+                        >
+                    </label>
+
+
+                    <label>
+                        Walkers
+                        <output id="w1Out">12</output>
+
+                        <input
+                            id="w1"
+                            type="range"
+                            min="1"
+                            max="40"
+                            value="12"
+                        >
+                    </label>
+
+
+                    <button class="secondary" id="reroll1">
+                        ↻ New random paths
+                    </button>
+
+
+                    <div class="metric-row">
+
+                        <div>
+                            <small>RMS distance</small>
+                            <strong id="rms1">—</strong>
+                        </div>
+
+                        <div>
+                            <small>Theory s√N</small>
+                            <strong id="theory1">—</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel canvas-panel">
+                    <canvas id="canvas1"></canvas>
+                </div>
+
+            </div>
+
+
+            <div class="explain">
+
+                <div>
+                    <span class="step">01</span>
+                    <h3>Calculation</h3>
+                </div>
+
+                <p>
+                    Each step has fixed length <b>s</b>, but its angle θ
+                    is uniformly distributed from 0 to 2π. The vector sum
+                    therefore has no preferred direction. Averaging over
+                    many walks makes the cross terms vanish, leaving
+                    <b>⟨r²⟩ = Ns²</b>, so the typical displacement grows
+                    only as <b>s√N</b>, not N.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TASK 02 — BROWNIAN MOTION
+             ===================================================== -->
+
+        <section
+            class="section exhibit"
+            id="task2"
+            data-task="2"
+        >
+
+            <div class="exhibit-head">
+
+                <div>
+
+                    <p class="eyebrow">EXHIBIT 02</p>
+
+                    <h2>Brownian Motion</h2>
+
+                    <p class="lede">
+                        A simulation of elastic collisions between a large
+                        particle and surrounding smaller particles.
+                    </p>
+
+                </div>
+
+                <div class="formula-chip">
+                    p<sub>before</sub> = p<sub>after</sub>
+                </div>
+
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="panel controls">
+
+                    <h3>Collision chamber</h3>
+
+                    <label>
+                        Small particles
+                        <output id="n2Out">90</output>
+
+                        <input
+                            id="n2"
+                            type="range"
+                            min="20"
+                            max="180"
+                            value="90"
+                        >
+                    </label>
+
+
+                    <label>
+                        Mass ratio m/M
+                        <output id="ratio2Out">0.08</output>
+
+                        <input
+                            id="ratio2"
+                            type="range"
+                            min="0.01"
+                            max="0.5"
+                            step="0.01"
+                            value="0.08"
+                        >
+                    </label>
+
+
+                    <label>
+                        Collision strength
+                        <output id="kick2Out">1.0</output>
+
+                        <input
+                            id="kick2"
+                            type="range"
+                            min="0.2"
+                            max="2"
+                            step="0.1"
+                            value="1"
+                        >
+                    </label>
+
+
+                    <button class="secondary" id="run2">
+                        ▶ Restart simulation
+                    </button>
+
+
+                    <div class="metric-row">
+
+                        <div>
+                            <small>Big-particle speed</small>
+                            <strong id="speed2">0.00</strong>
+                        </div>
+
+                        <div>
+                            <small>Elapsed</small>
+                            <strong id="time2">0.0 s</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel canvas-panel">
+                    <canvas id="canvas2"></canvas>
+                </div>
+
+            </div>
+
+
+            <div class="explain">
+
+                <div>
+                    <span class="step">02</span>
+                    <h3>Model</h3>
+                </div>
+
+                <p>
+                    The small particles move with random headings and collide
+                    elastically with a larger particle. At a collision,
+                    momentum conservation updates the velocity component
+                    along the line of centres. The large particle therefore
+                    receives a sequence of small impulses and develops an
+                    irregular Brownian trajectory.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TASK 03 — BLACK BODIES & HEAT
+             ===================================================== -->
+
+        <section
+            class="section exhibit"
+            id="task3"
+            data-task="3"
+        >
+
+            <div class="exhibit-head">
+
+                <div>
+
+                    <p class="eyebrow">EXHIBIT 03</p>
+
+                    <h2>Black Bodies &amp; Heat</h2>
+
+                    <p class="lede">
+                        Planck's law for blackbody radiation and Einstein's
+                        model of heat capacity.
+                    </p>
+
+                </div>
+
+                <div class="formula-chip">
+                    B(λ,T) = 2hc² / λ⁵(e<sup>hc/λkT</sup>−1)
+                </div>
+
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="panel controls">
+
+                    <h3>Planck spectrum</h3>
+
+                    <label>
+                        Temperature
+                        <output id="t3Out">5000</output> K
+
+                        <input
+                            id="t3"
+                            type="range"
+                            min="2500"
+                            max="9000"
+                            step="100"
+                            value="5000"
+                        >
+                    </label>
+
+
+                    <label>
+                        Wavelength window
+                        <output id="win3Out">2500</output> nm
+
+                        <input
+                            id="win3"
+                            type="range"
+                            min="700"
+                            max="4000"
+                            step="100"
+                            value="2500"
+                        >
+                    </label>
+
+
+                    <div class="metric-row">
+
+                        <div>
+                            <small>Wien peak</small>
+                            <strong id="peak3">—</strong>
+                        </div>
+
+                        <div>
+                            <small>Stefan trend</small>
+                            <strong id="power3">T⁴</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mini-note">
+                    The supplied task compares several temperatures.
+                    Move the slider to see the peak shift according
+                    to Wien's law.
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+                <canvas id="canvas3"></canvas>
+            </div>
+
+
+            <div class="explain">
+
+                <div>
+                    <span class="step">03</span>
+                    <h3>Calculation</h3>
+                </div>
+
+                <p>
+                    For each wavelength λ, the program evaluates Planck's
+                    spectral radiance. Increasing T raises the overall
+                    intensity and shifts the maximum toward shorter
+                    wavelengths. The task also asks for Einstein's molar
+                    heat capacity model,
+                    <b>
+                        C<sub>V</sub> =
+                        3R x²e<sup>x</sup>/(e<sup>x</sup>−1)²
+                    </b>
+                    with x = θ<sub>E</sub>/T; its high-temperature limit
+                    tends to the Dulong–Petit value 3R.
+                </p>
+
+            </div>
+
+
+            <div class="image-strip">
+
+                <figure>
+
+                    <img src="Code/task3_planck_spectrum.png">
+
+                    <figcaption>
+                        Supplied computational output · Planck spectrum
+                    </figcaption>
+
+                </figure>
+
+
+                <figure>
+
+                    <img src="Code/task3_einstein_heat_capacity.png">
+
+                    <figcaption>
+                        Supplied computational output · Einstein heat capacity
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TASK 04 — PHOTOELECTRIC EFFECT
+             ===================================================== -->
+
+        <section
+            class="section exhibit"
+            id="task4"
+            data-task="4"
+        >
+
+            <div class="exhibit-head">
+
+                <div>
+
+                    <p class="eyebrow">EXHIBIT 04</p>
+
+                    <h2>Photoelectric Effect</h2>
+
+                    <p class="lede">
+                        A simulation of photoelectric emission and the
+                        stopping potential.
+                    </p>
+
+                </div>
+
+                <div class="formula-chip">
+                    V<sub>s</sub> = hf/e − φ/e
+                </div>
+
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="panel controls">
+
+                    <h3>Choose a metal</h3>
+
+                    <select id="metal4">
+                        <option value="2.10">Cesium · 2.10 eV</option>
+                        <option value="2.28">Sodium · 2.28 eV</option>
+                        <option value="4.30">Zinc · 4.30 eV</option>
+                        <option value="4.70">Copper · 4.70 eV</option>
+                        <option value="6.35">Platinum · 6.35 eV</option>
+                    </select>
+
+
+                    <label>
+                        Frequency
+                        <output id="f4Out">1.20</output> ×10¹⁵ Hz
+
+                        <input
+                            id="f4"
+                            type="range"
+                            min="4"
+                            max="20"
+                            step="0.1"
+                            value="12"
+                        >
+                    </label>
+
+
+                    <div class="metric-row">
+
+                        <div>
+                            <small>Threshold</small>
+                            <strong id="threshold4">—</strong>
+                        </div>
+
+                        <div>
+                            <small>Stopping voltage</small>
+                            <strong id="vs4">—</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="formula-box" id="photoEq4">
+                    hf = φ + K<sub>max</sub>
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+                <canvas id="canvas4"></canvas>
+            </div>
+
+
+            <div class="explain">
+
+                <div>
+                    <span class="step">04</span>
+                    <h3>Calculation</h3>
+                </div>
+
+                <p>
+                    Einstein's equation gives
+                    <b>hf = φ + K<sub>max</sub></b>.
+                    Since the stopping voltage satisfies
+                    <b>K<sub>max</sub> = eV<sub>s</sub></b>,
+                    we get
+                    <b>V<sub>s</sub> = (h/e)f − φ/e</b>.
+                    The slope is universal; changing the metal changes
+                    the intercept because the work function changes.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TASK 05 — HYDROGEN ATOM
+             ===================================================== -->
+
+        <section
+            class="section exhibit"
+            id="task5"
+            data-task="5"
+        >
+
+            <div class="exhibit-head">
+
+                <div>
+
+                    <p class="eyebrow">EXHIBIT 05</p>
+
+                    <h2>Hydrogen Atom</h2>
+
+                    <p class="lede">
+                        The allowed energy levels of hydrogen and the
+                        wavelengths of emitted photons.
+                    </p>
+
+                </div>
+
+                <div class="formula-chip">
+                    E<sub>n</sub> = −13.6/n² eV
+                </div>
+
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="panel controls">
+
+                    <h3>Choose a transition</h3>
+
+                    <label>
+                        Initial level n<sub>i</sub>
+                        <output id="ni5Out">4</output>
+
+                        <input
+                            id="ni5"
+                            type="range"
+                            min="2"
+                            max="8"
+                            value="4"
+                        >
+                    </label>
+
+
+                    <label>
+                        Final level n<sub>f</sub>
+                        <output id="nf5Out">2</output>
+
+                        <input
+                            id="nf5"
+                            type="range"
+                            min="1"
+                            max="7"
+                            value="2"
+                        >
+                    </label>
+
+
+                    <div class="metric-row">
+
+                        <div>
+                            <small>Photon energy</small>
+                            <strong id="e5">—</strong>
+                        </div>
+
+                        <div>
+                            <small>Wavelength</small>
+                            <strong id="lambda5">—</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="level-readout" id="levels5"></div>
+
+            </div>
+
+
+            <div class="panel canvas-panel">
+                <canvas id="canvas5"></canvas>
+            </div>
+
+
+            <div class="explain">
+
+                <div>
+                    <span class="step">05</span>
+                    <h3>How Bohr gets the spectrum</h3>
+                </div>
+
+                <p>
+                    Coulomb attraction supplies the centripetal force and
+                    angular momentum is quantised:
+                    <b>mvr = nℏ</b>.
+                    Combining them gives
+                    <b>E<sub>n</sub> = −13.6057/n² eV</b>.
+                    A downward transition emits a photon with
+                    <b>
+                        E<sub>γ</sub> =
+                        E<sub>ni</sub> − E<sub>nf</sub> = hc/λ
+                    </b>.
+                    That relation gives the hydrogen emission lines.
+                </p>
+
+            </div>
+
+
+            <div class="image-strip single">
+
+                <figure>
+
+                    <img src="Code/task5_hydrogen_emission_spectrum.png">
+
+                    <figcaption>
+                        Supplied computational output · hydrogen emission spectrum
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TASK 06 — ELECTRON DIFFRACTION
+             ===================================================== -->
+
+        <section
+            class="section exhibit"
+            id="task6"
+            data-task="6"
+        >
+
+            <div class="exhibit-head">
+
+                <div>
+
+                    <p class="eyebrow">EXHIBIT 06</p>
+
+                    <h2>Electron Diffraction</h2>
+
+                    <p class="lede">
+                        Electron diffraction from graphite using the
+                        de Broglie wavelength.
+                    </p>
+
+                </div>
+
+                <div class="formula-chip">
+                    nλ = 2d sinφ
+                </div>
+
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="panel controls">
+
+                    <h3>Diffraction tube</h3>
+
+                    <label>
+                        Accelerating voltage
+                        <output id="v6Out">2.0</output> kV
+
+                        <input
+                            id="v6"
+                            type="range"
+                            min="1"
+                            max="5"
+                            step="0.1"
+                            value="2"
+                        >
+                    </label>
+
+
+                    <label>
+                        Graphite spacing
+
+                        <select id="d6">
+                            <option value="0.123">0.123 nm</option>
+                            <option value="0.213">0.213 nm</option>
+                        </select>
+                    </label>
+
+
+                    <div class="metric-row">
+
+                        <div>
+                            <small>de Broglie λ</small>
+                            <strong id="lambda6">—</strong>
+                        </div>
+
+                        <div>
+                            <small>Visible rings</small>
+                            <strong id="rings6">—</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mini-note">
+                        The screen radius is r = 65 mm. Each allowed
+                        Bragg order produces a ring at x = r sin(2φ).
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+                    <canvas id="canvas6"></canvas>
+                </div>
+
+            </div>
+
+
+            <div class="explain">
+
+                <div>
+                    <span class="step">06</span>
+                    <h3>Calculation</h3>
+                </div>
+
+                <p>
+                    Accelerating through V gives the electron momentum
+                    <b>p = √(2m<sub>e</sub>eV)</b>, so
+                    <b>λ = h/p</b>.
+                    Graphite then imposes Bragg's condition
+                    <b>nλ = 2d sinφ</b>.
+                    The spherical screen converts φ into a ring radius.
+                    Combining the equations predicts the straight-line
+                    check of <b>1/√V</b> against <b>sinφ</b>.
+                </p>
+
+            </div>
+
+
+            <div class="image-strip single">
+
+                <figure>
+
+                    <img src="Code/task6_electron_diffraction.png">
+
+                    <figcaption>
+                        Supplied computational output · graphite diffraction model and validation
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TASK 07 — PARTICLE IN A BOX
+             ===================================================== -->
+
+        <section
+            class="section exhibit"
+            id="task7"
+            data-task="7"
+        >
+
+            <div class="exhibit-head">
+
+                <div>
+
+                    <p class="eyebrow">EXHIBIT 07</p>
+
+                    <h2>Particle in a Box</h2>
+
+                    <p class="lede">
+                        The energy eigenstates and probability density of
+                        a particle in a one-dimensional box.
+                    </p>
+
+                </div>
+
+                <div class="formula-chip">
+                    ψ<sub>n</sub> = √(2/a) sin(nπx/a)
+                </div>
+
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="panel controls">
+
+                    <h3>Quantum number</h3>
+
+                    <label>
+                        n
+                        <output id="n7Out">3</output>
+
+                        <input
+                            id="n7"
+                            type="range"
+                            min="1"
+                            max="8"
+                            value="3"
+                        >
+                    </label>
+
+
+                    <label>
+                        Box width
+                        <output id="a7Out">1.00</output> nm
+
+                        <input
+                            id="a7"
+                            type="range"
+                            min="0.5"
+                            max="3"
+                            step="0.05"
+                            value="1"
+                        >
+                    </label>
+
+
+                    <div class="metric-row">
+
+                        <div>
+                            <small>Energy</small>
+                            <strong id="energy7">—</strong>
+                        </div>
+
+                        <div>
+                            <small>ΔxΔp / ℏ</small>
+                            <strong id="unc7">—</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+                    <canvas id="canvas7"></canvas>
+                </div>
+
+            </div>
+
+
+            <div class="explain">
+
+                <div>
+                    <span class="step">07</span>
+                    <h3>Why only certain waves fit</h3>
+                </div>
+
+                <p>
+                    Infinite walls force ψ = 0 at both ends. The allowed
+                    standing waves therefore have <b>n = 1,2,3,…</b>.
+                    Substitution into Schrödinger's equation gives
+                    <b>E<sub>n</sub> = n²π²ℏ²/(2ma²)</b>.
+                    For the extension, the supplied solution gives
+                    <b>
+                        ΔxΔp/ℏ = ½√(n²π²/3 − 2)
+                    </b>,
+                    which always exceeds 1/2.
+                </p>
+
+            </div>
+
+
+            <div class="image-strip">
+
+                <figure>
+
+                    <img src="Code/task7_particle_in_a_box.png">
+
+                    <figcaption>
+                        Supplied computational output · energy and probability density
+                    </figcaption>
+
+                </figure>
+
+
+                <figure>
+
+                    <img src="Code/task7_uncertainty_principle.png">
+
+                    <figcaption>
+                        Supplied computational output · uncertainty verification
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TASK 08 — QUANTUM CRYPTOGRAPHY
+             ===================================================== -->
+
+        <section
+            class="section exhibit"
+            id="task8"
+            data-task="8"
+        >
+
+            <div class="exhibit-head">
+
+                <div>
+
+                    <p class="eyebrow">EXHIBIT 08</p>
+
+                    <h2>Quantum Cryptography</h2>
+
+                    <p class="lede">
+                        A comparison of classical and quantum predictions
+                        for mismatch probability.
+                    </p>
+
+                </div>
+
+                <div class="formula-chip">
+                    P<sub>Q</sub> = sin²(φ−θ)
+                </div>
+
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="panel controls">
+
+                    <h3>Set the analyser angles</h3>
+
+                    <label>
+                        Alice θ
+                        <output id="theta8Out">−30</output>°
+
+                        <input
+                            id="theta8"
+                            type="range"
+                            min="-90"
+                            max="90"
+                            value="-30"
+                        >
+                    </label>
+
+
+                    <label>
+                        Bob φ
+                        <output id="phi8Out">30</output>°
+
+                        <input
+                            id="phi8"
+                            type="range"
+                            min="-90"
+                            max="90"
+                            value="30"
+                        >
+                    </label>
+
+
+                    <div class="metric-row">
+
+                        <div>
+                            <small>Classical mismatch</small>
+                            <strong id="class8">—</strong>
+                        </div>
+
+                        <div>
+                            <small>Quantum mismatch</small>
+                            <strong id="quant8">—</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="difference" id="diff8">
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+                <canvas id="canvas8"></canvas>
+            </div>
+
+
+            <div class="explain">
+
+                <div>
+                    <span class="step">08</span>
+                    <h3>Comparison</h3>
+                </div>
+
+                <p>
+                    The classical hidden-variable model gives
+                    <b>
+                        1 − cos²θ cos²φ − sin²θ sin²φ
+                    </b>.
+                    The quantum prediction is
+                    <b>sin²(φ−θ)</b>.
+                    Expanding the quantum expression reveals an
+                    interference cross-term
+                    <b>½ sin2θ sin2φ</b>,
+                    which is absent from the classical model.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TASK 09 — COMPTON SCATTERING
+             ===================================================== -->
+
+        <section
+            class="section exhibit"
+            id="task9"
+            data-task="9"
+        >
+
+            <div class="exhibit-head">
+
+                <div>
+
+                    <p class="eyebrow">EXHIBIT 09</p>
+
+                    <h2>Compton Scattering</h2>
+
+                    <p class="lede">
+                        Compton scattering of a photon from an electron
+                        using relativistic energy and momentum conservation.
+                    </p>
+
+                </div>
+
+                <div class="formula-chip">
+                    Δλ = h/(m<sub>e</sub>c)(1−cosθ)
+                </div>
+
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="panel controls">
+
+                    <h3>Photon energy</h3>
+
+                    <label>
+                        Incident photon
+                        <output id="e9Out">100</output> keV
+
+                        <input
+                            id="e9"
+                            type="range"
+                            min="10"
+                            max="1000"
+                            step="10"
+                            value="100"
+                        >
+                    </label>
+
+
+                    <label>
+                        Scattering angle θ
+                        <output id="theta9Out">90</output>°
+
+                        <input
+                            id="theta9"
+                            type="range"
+                            min="0"
+                            max="180"
+                            value="90"
+                        >
+                    </label>
+
+
+                    <div class="metric-row">
+
+                        <div>
+                            <small>Fractional shift</small>
+                            <strong id="shift9">—</strong>
+                        </div>
+
+                        <div>
+                            <small>Electron speed</small>
+                            <strong id="speed9">—</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="metric-row">
+
+                        <div>
+                            <small>Recoil angle</small>
+                            <strong id="recoil9">—</strong>
+                        </div>
+
+                        <div>
+                            <small>Scattered photon</small>
+                            <strong id="escat9">—</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+                    <canvas id="canvas9"></canvas>
+                </div>
+
+            </div>
+
+
+            <div class="explain">
+
+                <div>
+                    <span class="step">09</span>
+                    <h3>Why the wavelength changes</h3>
+                </div>
+
+                <p>
+                    Energy and momentum conservation for photon–electron
+                    scattering lead to
+                    <b>
+                        Δλ = h/(m<sub>e</sub>c)(1−cosθ)
+                    </b>.
+                    The app computes the scattered photon energy, then
+                    obtains the electron momentum from vector momentum
+                    conservation and its speed from the relativistic
+                    relation
+                    <b>
+                        γ = 1 + K/(m<sub>e</sub>c²)
+                    </b>.
+                </p>
+
+            </div>
+
+
+            <div class="image-strip single">
+
+                <figure>
+
+                    <img src="Code/task9_compton_scattering.png">
+
+                    <figcaption>
+                        Supplied computational output · 100 keV Compton scattering
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TASK 10 — HYDROGENIC ORBITALS
+             ===================================================== -->
+
+        <section
+            class="section exhibit"
+            id="task10"
+            data-task="10"
+        >
+
+            <div class="exhibit-head">
+
+                <div>
+
+                    <p class="eyebrow">EXHIBIT 10</p>
+
+                    <h2>Hydrogenic Orbitals</h2>
+
+                    <p class="lede">
+                        Hydrogenic wavefunctions and their probability
+                        densities for different quantum numbers.
+                    </p>
+
+                </div>
+
+                <div class="formula-chip">
+                    ψ<sub>nlm</sub> =
+                    R<sub>nl</sub>Y<sub>l</sub><sup>m</sup>
+                </div>
+
+            </div>
+
+
+            <div class="grid-2">
+
+                <div class="panel controls">
+
+                    <h3>Choose an orbital</h3>
+
+                    <label>
+                        n
+                        <output id="n10Out">2</output>
+
+                        <input
+                            id="n10"
+                            type="range"
+                            min="1"
+                            max="5"
+                            value="2"
+                        >
+                    </label>
+
+
+                    <label>
+                        l
+                        <output id="l10Out">1</output>
+
+                        <input
+                            id="l10"
+                            type="range"
+                            min="0"
+                            max="1"
+                            value="1"
+                        >
+                    </label>
+
+
+                    <label>
+                        m
+                        <output id="m10Out">0</output>
+
+                        <input
+                            id="m10"
+                            type="range"
+                            min="-1"
+                            max="1"
+                            value="0"
+                        >
+                    </label>
+
+
+                    <div class="orbital-name" id="orbitalName">
+                        2p, m=0
+                    </div>
+
+
+                    <div class="mini-note">
+                        The supplied Task 10 code evaluates the hydrogenic
+                        radial function and spherical harmonic. The preview
+                        below uses the supplied rendered orbitals; the
+                        controls switch between physically valid labels and
+                        show the corresponding quantum numbers.
+                    </div>
+
+                </div>
+
+
+                <div class="panel orbital-preview">
+
+                    <img
+                        id="orbitalImg"
+                        src="Code/task10_hydrogenic_orbitals_2d.png"
+                    >
+
+                    <div
+                        class="preview-label"
+                        id="orbitalLabel"
+                    >
+                        Supplied 2D density atlas · selected family preview
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="explain">
+
+                <div>
+                    <span class="step">10</span>
+                    <h3>Reading the quantum numbers</h3>
+                </div>
+
+                <p>
+                    The hydrogenic wavefunction separates into a radial part
+                    and a spherical harmonic:
+                    <b>
+                        ψ<sub>nlm</sub>(r,θ,φ) =
+                        R<sub>nl</sub>(r)
+                        Y<sub>l</sub><sup>m</sup>(θ,φ)
+                    </b>.
+                    The principal number n sets the energy scale and radial
+                    structure; l controls angular structure; m selects the
+                    magnetic component. The quantity visualised is
+                    <b>|ψ|²</b>, a probability density, not a literal
+                    planetary orbit.
+                </p>
+
+            </div>
+
+
+            <div class="image-strip">
+
+                <figure>
+
+                    <img src="Code/task10_hydrogenic_orbitals_2d.png">
+
+                    <figcaption>
+                        Supplied 2D hydrogenic probability-density atlas
+                    </figcaption>
+
+                </figure>
+
+
+                <figure>
+
+                    <img src="Code/task10_hydrogenic_orbitals_3d.png">
+
+                    <figcaption>
+                        Supplied 3D density visualisation
+                    </figcaption>
+
+                </figure>
+
+            </div>
+
+
+            <!-- =================================================
+                 END
+                 ================================================= -->
+
+            <div class="finish">
+
+                <span>END</span>
+
+                <h3>
+                    Computational Physics<br>
+                    2026
+                </h3>
+
+                <p>
+                    Interactive solutions and simulations for the
+                    2026 BPhO Computational Physics challenge.
+                </p>
+
+                <button class="primary" data-go="1">
+                    ↺ Start again
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
 </div>
+
+
 <script src="app.js"></script>
+
 </body>
 </html>
