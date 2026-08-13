@@ -1,0 +1,1083 @@
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{graphicx}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\setlength{\headheight}{14pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Radioactivity --- AF December 2019}
+\rhead{Radioactivity}
+\cfoot{\thepage}
+
+\title{\textbf{Radioactivity}\\Worked Solutions}
+\author{AF --- December 2019}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+This document gives worked solutions to the supplied BPhO
+\emph{Radioactivity} problem sheet. The notation, constants, approximations and
+methods follow the sheet and its accompanying solution document. Numerical
+values have been evaluated explicitly so that the calculations can also be
+reproduced computationally.
+
+The central model is the radioactive decay law
+\[
+\frac{dN}{dt}=-\lambda N,
+\]
+with solution
+\[
+N(t)=N_0e^{-\lambda t}.
+\]
+The activity is
+\[
+A(t)=-\frac{dN}{dt}=\lambda N(t),
+\]
+and the half-life satisfies
+\[
+\boxed{\lambda=\frac{\ln 2}{t_{1/2}}}.
+\]
+Consequently,
+\[
+\boxed{N(t)=N_0\,2^{-t/t_{1/2}}}
+\qquad\text{and}\qquad
+\boxed{A(t)=A_0\,2^{-t/t_{1/2}}}.
+\]
+
+% ============================================================
+\section{Question 1}
+
+\subsection{(i) Half-life of radon}
+
+The radon sample falls to $2\%$ of its original amount after $22$ days:
+\[
+\frac{N}{N_0}=0.02.
+\]
+
+Using
+\[
+\frac{N}{N_0}=2^{-t/t_{1/2}},
+\]
+we obtain
+\[
+0.02=2^{-22/t_{1/2}}.
+\]
+
+Taking logarithms,
+\[
+\frac{22}{t_{1/2}}
+=
+\log_2(50),
+\]
+so
+\[
+t_{1/2}
+=
+\frac{22}{\log_2(50)}
+=
+\boxed{3.90\ \mathrm{days}}.
+\]
+
+\subsection{(ii) Carbon-14 dating}
+
+For fresh biomatter,
+\[
+A_0=238\ \mathrm{Bq\,kg^{-1}},
+\]
+whereas the hammer has
+\[
+A=1.05\ \mathrm{Bq\,kg^{-1}}.
+\]
+
+Since activity follows the same exponential law as the number of nuclei,
+\[
+\frac{A}{A_0}
+=
+2^{-t/t_{1/2}}.
+\]
+
+Therefore
+\[
+\frac{1.05}{238}
+=
+2^{-t/5370}.
+\]
+
+Hence
+\[
+t
+=
+5370
+\log_2\left(\frac{238}{1.05}\right)
+\approx
+\boxed{4.20\times10^4\ \mathrm{years}}.
+\]
+
+Thus the hammer dates to approximately
+\[
+\boxed{42\,000\ \mathrm{years}}.
+\]
+
+\subsection{(iii) Attenuation of Sr-90 beta radiation}
+
+The intensity attenuation law is
+\[
+I=I_0e^{-\mu x}.
+\]
+
+Here
+\[
+I_0=200\ \mathrm{Bq},
+\qquad
+I=10\ \mathrm{Bq},
+\qquad
+x=2.00\ \mathrm{mm}=2.00\times10^{-3}\ \mathrm m.
+\]
+
+Therefore
+\[
+\frac{10}{200}
+=
+e^{-\mu(0.002)}.
+\]
+
+Thus
+\[
+\mu
+=
+\frac{\ln(20)}{0.002}
+\approx
+\boxed{1.50\times10^3\ \mathrm{m^{-1}}}.
+\]
+
+The half-thickness is defined by
+\[
+\frac{I}{I_0}=\frac12,
+\]
+so
+\[
+\frac12=e^{-\mu x_{1/2}},
+\]
+giving
+\[
+\boxed{x_{1/2}=\frac{\ln2}{\mu}}
+\]
+and hence
+\[
+\boxed{x_{1/2}\approx4.63\times10^{-4}\ \mathrm m
+=0.463\ \mathrm{mm}}.
+\]
+
+\subsection{(iv) Mass of Ra-226}
+
+The activity is
+\[
+A=\lambda N,
+\]
+so
+\[
+N=\frac{A}{\lambda}
+=
+\frac{At_{1/2}}{\ln2}.
+\]
+
+Using
+\[
+A=9900\ \mathrm{Bq},
+\qquad
+t_{1/2}=1602\ \mathrm{yr}
+\approx1602(365.25)(24)(3600)\ \mathrm s,
+\]
+gives
+\[
+N\approx7.22\times10^{14}\ \text{atoms}.
+\]
+
+The mass of one Ra-226 atom is approximately
+\[
+m_{\mathrm{Ra}}
+=
+226u,
+\qquad
+u=1.661\times10^{-27}\ \mathrm{kg}.
+\]
+
+Hence
+\[
+m
+=
+N(226u)
+\approx
+\boxed{2.71\times10^{-10}\ \mathrm{kg}}
+\]
+or
+\[
+\boxed{0.271\ \mathrm{mg}}.
+\]
+
+For U-235,
+\[
+t_{1/2}=2.22\times10^{16}\ \mathrm s,
+\]
+so
+\[
+N_U
+=
+\frac{A t_{1/2}}{\ln2}
+\approx
+3.17\times10^{20}.
+\]
+
+Therefore
+\[
+m_U
+=
+N_U(235u)
+\approx
+\boxed{1.24\times10^{-4}\ \mathrm{kg}}
+=
+\boxed{124\ \mathrm{mg}}.
+\]
+
+The much longer half-life of U-235 means that many more atoms are required to
+produce the same activity.
+
+\subsection{(v) Age of the Pa-231 statuette}
+
+The Pa-231 initially decays into Ac-227, whose subsequent decay chain eventually
+produces stable Pb-207. Under the problem's approximation, the measured fraction
+of remaining Pa-231 is therefore
+\[
+\frac{N}{N_0}=0.10.
+\]
+
+Using
+\[
+\frac{N}{N_0}=2^{-t/t_{1/2}},
+\]
+with
+\[
+t_{1/2}=32800\ \mathrm{yr},
+\]
+gives
+\[
+0.1=2^{-t/32800}.
+\]
+
+Thus
+\[
+t
+=
+32800\log_2(10)
+\approx
+\boxed{1.09\times10^5\ \mathrm{years}}.
+\]
+
+Hence the statuette has been in space for approximately
+\[
+\boxed{109\,000\ \mathrm{years}}.
+\]
+
+% ============================================================
+\section{Question 2 --- Iodine-123}
+
+\subsection{(i) Decay equation}
+
+Iodine has atomic number $Z=53$. Electron capture reduces the atomic number by
+one without changing the mass number:
+\[
+{}^{123}_{53}\mathrm{I}+e^-
+\rightarrow
+{}^{123}_{52}\mathrm{Te}+\nu_e.
+\]
+
+The daughter nucleus is Te-123.
+
+\subsection{(ii) Medical usefulness}
+
+I-123 has several properties that make it useful for thyroid imaging:
+
+\begin{itemize}
+    \item its half-life of $13.22$ hours is long enough for preparation and imaging,
+    but short enough that it does not remain radioactive for an excessively long
+    period;
+    \item it decays by electron capture and produces a useful $\gamma$ ray;
+    \item the emitted $159\ \mathrm{keV}$ gamma radiation can escape the body and
+    be detected externally;
+    \item iodine is naturally concentrated by the thyroid, so the radioactive
+    tracer preferentially reaches the tissue being imaged.
+\end{itemize}
+
+The radiation therefore provides a signal while allowing the distribution of
+iodine in the thyroid to be measured.
+
+\subsection{(iii) Activity after 24 hours}
+
+The initial activity is
+\[
+A_0=2.5\times10^7\ \mathrm{Bq}.
+\]
+
+Using
+\[
+A(t)=A_0\,2^{-t/t_{1/2}},
+\]
+with
+\[
+t=24\ \mathrm h,
+\qquad
+t_{1/2}=13.22\ \mathrm h,
+\]
+we obtain
+\[
+A(24)
+=
+2.5\times10^7
+2^{-24/13.22}.
+\]
+
+Therefore
+\[
+\boxed{A(24)\approx7.10\times10^6\ \mathrm{Bq}}.
+\]
+
+The activity actually measured in the thyroid will be lower because not all of
+the administered iodine is taken up and retained by the thyroid. Some activity
+remains elsewhere in the body and some is removed biologically.
+
+\subsection{(iv) Number of I-123 atoms}
+
+The decay constant is
+\[
+\lambda
+=
+\frac{\ln2}{13.22(3600)}
+\approx1.456\times10^{-5}\ \mathrm{s^{-1}}.
+\]
+
+Since
+\[
+A_0=\lambda N_0,
+\]
+\[
+N_0=\frac{A_0}{\lambda}.
+\]
+
+Hence
+\[
+N_0
+=
+\frac{2.5\times10^7}{1.456\times10^{-5}}
+\approx
+\boxed{1.72\times10^{12}\ \text{atoms}}.
+\]
+
+\subsection{(v) Total energy from gamma emission}
+
+Each decay produces a gamma photon of energy
+\[
+E_\gamma=159\ \mathrm{keV}.
+\]
+
+Converting to joules,
+\[
+E_\gamma
+=
+159\times10^3(1.602\times10^{-19})
+\approx
+2.55\times10^{-14}\ \mathrm J.
+\]
+
+Assuming one such gamma emission per decay and complete absorption,
+\[
+E_{\rm total}=N_0E_\gamma.
+\]
+
+Thus
+\[
+E_{\rm total}
+\approx
+(1.72\times10^{12})(2.55\times10^{-14})
+\approx
+\boxed{4.37\times10^{-2}\ \mathrm J}.
+\]
+
+This is the total gamma energy associated with the initial population.
+
+\subsection{(vi) Initial and average gamma power}
+
+The instantaneous power immediately after administration is
+\[
+P_0=A_0E_\gamma.
+\]
+
+Thus
+\[
+P_0
+=
+(2.5\times10^7)
+(159\times10^3)(1.602\times10^{-19})
+\]
+and therefore
+\[
+\boxed{P_0\approx6.37\times10^{-7}\ \mathrm{W}}.
+\]
+
+Over $48$ hours, the exact total emitted energy is
+\[
+E_{48}
+=
+N_0E_\gamma
+\left(1-2^{-48/13.22}\right).
+\]
+
+Hence the average power is
+\[
+P_{\rm avg}
+=
+\frac{E_{48}}{48(3600)}
+\approx
+\boxed{2.33\times10^{-7}\ \mathrm W}.
+\]
+
+Thus the initial gamma-emission power is approximately
+\[
+\boxed{2.7P_{\rm avg}}.
+\]
+
+% ============================================================
+\section{Question 3 --- Americium-241}
+
+\subsection{(i) Decay equation}
+
+Americium has atomic number $95$. Alpha decay reduces the mass number by $4$
+and the atomic number by $2$:
+\[
+\boxed{
+{}^{241}_{95}\mathrm{Am}
+\rightarrow
+{}^{237}_{93}\mathrm{Np}
++
+{}^{4}_{2}\mathrm{He}
+}.
+\]
+
+\subsection{(ii) Activity of a fresh smoke detector}
+
+The problem states that the active material is $0.33\,\mu\mathrm g$ of
+AmO$_2$. Using the supplied oxygen mass number $16$, the molar mass in the
+problem's approximation is
+\[
+M_{\mathrm{AmO_2}}=241+2(16)=273\ \mathrm{g\,mol^{-1}}.
+\]
+
+Thus
+\[
+n=\frac{0.33\times10^{-6}\ \mathrm g}{273\ \mathrm{g\,mol^{-1}}}
+\approx1.21\times10^{-9}\ \mathrm{mol},
+\]
+and the number of Am-241 nuclei is
+\[
+N_0=nN_A
+\approx
+\boxed{7.29\times10^{14}}.
+\]
+
+The decay constant is
+\[
+\lambda
+=
+\frac{\ln2}{432.2(365.25)(24)(3600)}
+\approx5.08\times10^{-11}\ \mathrm{s^{-1}}.
+\]
+
+Therefore
+\[
+A_0=\lambda N_0
+\approx
+\boxed{3.70\times10^4\ \mathrm{Bq}}.
+\]
+
+Using
+\[
+1\ \mathrm{Ci}=3.7\times10^{10}\ \mathrm{Bq},
+\]
+gives
+\[
+\boxed{A_0\approx1.00\times10^{-6}\ \mathrm{Ci}}.
+\]
+
+This uses the stated AmO$_2$ mass directly. Treating the entire
+$0.33\,\mu\mathrm g$ as Am-241, as in the accompanying handwritten
+calculation, gives about $4.2\times10^4$ Bq; the AmO$_2$ calculation is the
+one consistent with the wording of the question.
+
+\subsection{(iii) Ionizations and detector current}
+
+Each alpha particle has energy
+\[
+E_\alpha=5.486\ \mathrm{MeV}.
+\]
+
+The ionization energy is
+\[
+E_i=34\ \mathrm{eV}.
+\]
+
+Thus the approximate number of ion pairs produced per alpha particle is
+\[
+n_i
+=
+\frac{5.486\times10^6}{34}
+\approx
+1.61\times10^5.
+\]
+
+Using the activity found in part (ii), the ion-pair production rate is
+\[
+\dot N_i=A_0n_i
+\approx
+(3.70\times10^4)(1.61\times10^5)
+\approx
+\boxed{5.97\times10^9\ \mathrm{s^{-1}}}.
+\]
+
+An ion pair produces both an electron and a positive ion. If both charge
+carriers are collected, their contributions to the detector current add, so
+\[
+I=2e\dot N_i.
+\]
+
+Hence
+\[
+I
+\approx
+2(1.602\times10^{-19})(5.97\times10^9)
+\approx
+\boxed{1.91\times10^{-9}\ \mathrm A}.
+\]
+
+\subsection{(iv) Estimating the molar mass of smoke particles}
+
+Assume thermal equilibrium. The mean translational kinetic energy of a gas
+particle is
+\[
+\frac12M\overline{v^2}
+=
+\frac32k_BT.
+\]
+
+Thus
+\[
+M\overline{v^2}=\text{constant}
+\]
+at fixed temperature, so
+\[
+M\propto\frac1{\overline{v^2}}.
+\]
+
+The current is proportional to the rate at which the charged particles are
+collected. Following the model in the supplied solution, take the current
+reduction to correspond to a reduction of the characteristic particle speed:
+\[
+\frac{v_{\rm smoke}}{v_{\rm air}}\approx0.2.
+\]
+
+Therefore
+\[
+\frac{\overline{v_{\rm smoke}^2}}
+{\overline{v_{\rm air}^2}}
+\approx0.2^2=0.04.
+\]
+
+Hence
+\[
+\frac{M_{\rm smoke}}{M_{\rm air}}
+=
+\frac{\overline{v_{\rm air}^2}}
+{\overline{v_{\rm smoke}^2}}
+\approx\frac1{0.04}=25.
+\]
+
+With
+\[
+M_{\rm air}=28.97\ \mathrm{g\,mol^{-1}},
+\]
+we obtain
+\[
+M_{\rm smoke}
+\approx
+25(28.97)
+\approx
+\boxed{7.24\times10^2\ \mathrm{g\,mol^{-1}}}.
+\]
+
+Thus the model predicts a characteristic smoke-particle molar mass of roughly
+\[
+\boxed{724\ \mathrm{g\,mol^{-1}}}.
+\]
+
+% ============================================================
+\section{Question 4 --- The Elephant's Foot}
+
+\subsection{(i) Absorbed particle rate}
+
+The radiation dose rate is
+\[
+80\ \mathrm{Gy\,h^{-1}}
+=
+80\ \mathrm{J\,kg^{-1}\,h^{-1}}.
+\]
+
+A $10\ \mathrm{cm}\times10\ \mathrm{cm}\times10\ \mathrm{cm}$ cube of water has
+volume
+\[
+V=(0.1)^3=10^{-3}\ \mathrm{m^3}.
+\]
+
+Taking the density of water to be approximately
+\[
+1000\ \mathrm{kg\,m^{-3}},
+\]
+the mass is
+\[
+m=1.0\ \mathrm{kg}.
+\]
+
+Therefore the absorbed energy per second is
+\[
+P
+=
+\frac{80\ \mathrm J}{3600\ \mathrm s}
+=
+2.22\times10^{-2}\ \mathrm{J\,s^{-1}}.
+\]
+
+For particle energy
+\[
+E_p=5\ \mathrm{MeV}
+=
+5\times10^6(1.602\times10^{-19})
+\approx
+8.01\times10^{-13}\ \mathrm J,
+\]
+the required particle rate is
+\[
+\dot N
+=
+\frac{P}{E_p}
+\approx
+\boxed{2.77\times10^{10}\ \mathrm{s^{-1}}}.
+\]
+
+The cube is at a distance from the source. Assuming approximately isotropic
+spreading, the flux varies as
+\[
+\Phi\propto\frac1{r^2}.
+\]
+
+At three times the distance,
+\[
+\frac{\Phi'}{\Phi}
+=
+\frac1{3^2}
+=
+\boxed{\frac19}.
+\]
+
+Thus the particle flux is reduced by a factor of nine.
+
+\subsection{(ii) Total activity of the Elephant's Foot}
+
+The surface area of the hemispherical cap is
+\[
+A=\pi(a^2+h^2),
+\]
+with
+\[
+a=1.0\ \mathrm m,
+\qquad
+h=0.5\ \mathrm m.
+\]
+
+Hence
+\[
+A
+=
+\pi(1^2+0.5^2)
+=
+\boxed{3.93\ \mathrm{m^2}}.
+\]
+
+The particle rate found in part (i) is absorbed by an area
+\[
+A_{\rm cube}=(0.1)(0.1)=0.01\ \mathrm{m^2}.
+\]
+
+Therefore the estimated flux is
+\[
+\Phi
+=
+\frac{2.77\times10^{10}}{0.01}
+=
+2.77\times10^{12}\ \mathrm{m^{-2}s^{-1}}.
+\]
+
+Multiplying by the surface area,
+\[
+A_{\rm foot}
+=
+\Phi A
+\]
+gives
+\[
+A_{\rm foot}
+\approx
+(2.77\times10^{12})(3.93)
+\approx
+\boxed{1.09\times10^{13}\ \mathrm{Bq}}.
+\]
+
+This is an order-of-magnitude estimate based on the stated assumption that the
+surface flux is uniform.
+
+\subsection{(iii) Lead shielding}
+
+For attenuation,
+\[
+I=I_0\,2^{-x/x_{1/2}},
+\]
+where
+\[
+x_{1/2}=4.2\ \mathrm{mm}.
+\]
+
+We require
+\[
+5
+=
+(2.77\times10^8)
+2^{-x/4.2\mathrm{mm}}.
+\]
+
+Thus
+\[
+\frac{x}{4.2\ \mathrm{mm}}
+=
+\log_2\left(\frac{2.77\times10^8}{5}\right),
+\]
+so
+\[
+x
+=
+4.2
+\log_2\left(\frac{2.77\times10^8}{5}\right)\ \mathrm{mm}.
+\]
+
+Therefore
+\[
+\boxed{x\approx108\ \mathrm{mm}}
+\]
+or approximately
+\[
+\boxed{10.8\ \mathrm{cm}}.
+\]
+
+% ============================================================
+\section{Question 5 --- Pu-238 RTG}
+
+\subsection{(i) Initial atoms, activity and thermal power}
+
+The mass of plutonium is
+\[
+m=4.8\ \mathrm{kg}.
+\]
+
+Taking the molar mass of Pu-238 as approximately
+\[
+M=238\ \mathrm{g\,mol^{-1}},
+\]
+the number of moles is
+\[
+n=\frac{4800}{238}\approx20.17\ \mathrm{mol}.
+\]
+
+Thus
+\[
+N_0=nN_A
+\approx
+\boxed{1.21\times10^{25}\ \text{atoms}}.
+\]
+
+The half-life is
+\[
+t_{1/2}=87.7\ \mathrm{yr},
+\]
+so
+\[
+\lambda
+=
+\frac{\ln2}{87.7(365.25)(24)(3600)}
+\approx
+2.50\times10^{-10}\ \mathrm{s^{-1}}.
+\]
+
+The initial activity is therefore
+\[
+A_0=\lambda N_0
+\approx
+\boxed{3.04\times10^{15}\ \mathrm{Bq}}.
+\]
+
+Each alpha particle carries
+\[
+E_\alpha=5.593\ \mathrm{MeV}
+\]
+or
+\[
+E_\alpha
+=
+5.593\times10^6(1.602\times10^{-19})
+\approx
+8.96\times10^{-13}\ \mathrm J.
+\]
+
+Assuming every alpha particle's kinetic energy becomes thermal energy,
+\[
+P_0=A_0E_\alpha.
+\]
+
+Hence
+\[
+\boxed{P_0\approx2.73\times10^3\ \mathrm W}.
+\]
+
+The initial specific thermal power is
+\[
+\frac{P_0}{m}
+=
+\frac{2726}{4.8}
+\approx
+\boxed{568\ \mathrm{W\,kg^{-1}}}.
+\]
+
+\subsection{(ii) Heat power per kilogram as a function of time}
+
+The activity obeys
+\[
+A(t)=A_0\,2^{-t/t_{1/2}}.
+\]
+
+Since the energy per decay is constant,
+\[
+P(t)=P_0\,2^{-t/t_{1/2}}.
+\]
+
+Therefore the power per kilogram is
+\[
+\boxed{
+\frac{P(t)}{m}
+=
+568\,
+2^{-t/87.7}
+\ \mathrm{W\,kg^{-1}}
+}.
+\]
+
+The graph is therefore an exponential decay with half-life $87.7$ years.
+
+Useful reference points are
+\[
+\begin{array}{c|c}
+t\ (\mathrm{yr}) & P/m\ (\mathrm{W\,kg^{-1}})\\
+\hline
+0 & 568\\
+87.7 & 284\\
+175.4 & 142\\
+263.1 & 71.0\\
+350.8 & 35.5
+\end{array}
+\]
+
+The resulting exponential decay is plotted below.
+
+\begin{center}
+\includegraphics[width=0.82\textwidth]{pu238_power_per_kg.png}
+\end{center}
+
+The plotted curve uses the specific-power expression above and the reference
+values in the table.
+
+% ============================================================
+\section{Question 6 --- Geiger--Nuttall law}
+
+\subsection{(i) Constructing and testing the linear relation}
+
+The Geiger--Nuttall law supplied in the sheet is
+\[
+\log_{10}\left(\frac{t_{1/2}}{\mathrm s}\right)
+=
+a+
+\frac{bZ}{\sqrt{E_\alpha/\mathrm{MeV}}}.
+\]
+
+Define
+\[
+x=\frac{Z}{\sqrt{E_\alpha/\mathrm{MeV}}},
+\qquad
+y=\log_{10}\left(\frac{t_{1/2}}{\mathrm s}\right).
+\]
+
+The supplied spreadsheet calculates these quantities for the ten isotopes:
+
+\begin{center}
+\small
+\begin{tabular}{lrrr}
+\toprule
+Isotope & $Z$ & $E_\alpha$ / MeV & $\log_{10}(t_{1/2}/\mathrm s)$\\
+\midrule
+Po-212 & 84 & 8.955 & $-6.52$\\
+Po-214 & 84 & 7.680 & $-3.80$\\
+Rn-218 & 86 & 7.263 & $-1.46$\\
+At-217 & 85 & 7.000 & $-1.49$\\
+Bi-213 & 83 & 5.870 & $3.44$\\
+Ra-224 & 88 & 5.789 & $5.50$\\
+Th-238 & 90 & 5.520 & $7.78$\\
+Pa-231 & 91 & 5.150 & $12.01$\\
+Np-237 & 93 & 4.959 & $13.83$\\
+Th-232 & 90 & 4.081 & $17.65$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A linear regression of $y$ against $x$ gives
+\[
+\boxed{
+y=1.5077x-49.277
+}
+\]
+with
+\[
+\boxed{R^2=0.9945}.
+\]
+
+The corresponding spreadsheet-style scatter plot and fitted line are shown
+below.
+
+\begin{center}
+\includegraphics[width=0.82\textwidth]{geiger_nuttall.png}
+\end{center}
+
+The very high value of $R^2$ demonstrates that the supplied data strongly obey
+the linearised Geiger--Nuttall relationship.
+
+Thus
+\[
+\boxed{
+\log_{10}\left(\frac{t_{1/2}}{\mathrm s}\right)
+\approx
+\frac{1.51Z}{\sqrt{E_\alpha/\mathrm{MeV}}}
+-49.3
+}.
+\]
+
+\subsection{(ii) Predicting the half-life of Francium-221}
+
+For Francium-221,
+\[
+Z=87,
+\qquad
+E_\alpha=6.3\ \mathrm{MeV}.
+\]
+
+Therefore
+\[
+\log_{10}\left(\frac{t_{1/2}}{\mathrm s}\right)
+\approx
+\frac{1.51(87)}{\sqrt{6.3}}-49.3.
+\]
+
+Numerically,
+\[
+\frac{1.51(87)}{\sqrt{6.3}}
+\approx52.34,
+\]
+so
+\[
+\log_{10}\left(\frac{t_{1/2}}{\mathrm s}\right)
+\approx3.04.
+\]
+
+Hence
+\[
+t_{1/2}
+\approx10^{3.04}\ \mathrm s
+\approx
+\boxed{1.09\times10^3\ \mathrm s}.
+\]
+
+In minutes,
+\[
+\boxed{t_{1/2}\approx18.2\ \mathrm{min}},
+\]
+or approximately
+\[
+\boxed{3.47\times10^{-5}\ \mathrm{yr}}.
+\]
+
+\section*{Summary}
+
+The sheet develops a consistent computational picture of radioactive processes:
+
+\[
+\boxed{
+\frac{dN}{dt}=-\lambda N
+}
+\qquad\Longrightarrow\qquad
+\boxed{
+N(t)=N_0e^{-\lambda t}
+}
+\]
+
+with
+\[
+\boxed{
+\lambda=\frac{\ln2}{t_{1/2}}
+}.
+\]
+
+The same exponential law governs the number of nuclei, activity and the power
+released by a radioactive source. Attenuation follows an analogous exponential
+law,
+\[
+I=I_0e^{-\mu x},
+\]
+while the Geiger--Nuttall law reveals an approximately linear relationship between
+$\log_{10}t_{1/2}$ and $Z/\sqrt{E_\alpha}$ for alpha emitters.
+
+These relationships provide the basis for the numerical estimates throughout the
+sheet, from radiocarbon dating and medical tracers to RTG power output, radiation
+shielding and nuclear decay timescales.
+
+\end{document}

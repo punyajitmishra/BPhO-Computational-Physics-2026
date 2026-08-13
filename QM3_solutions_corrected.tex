@@ -1,0 +1,1254 @@
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+\fancyhf{}
+\lhead{Quantum Mechanics 3}
+\rhead{Quantum Mechanics 3}
+\cfoot{\thepage}
+
+\title{\textbf{Quantum Mechanics 3}\\Worked Solutions}
+\author{Worked Solutions}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+This document presents worked solutions to the \emph{Quantum Mechanics 3} problem
+sheet supplied with the BPhO Computational Physics Challenge 2026. The sheet
+focuses on de Broglie matter waves, the uncertainty principle, wavefunctions,
+the particle in a box, and the Copenhagen interpretation of measurement.
+
+The derivations and numerical methods follow the accompanying BPhO solution
+document. Numerical values are quoted to a sensible precision and use the
+physical constants supplied on the problem sheet.
+
+% ============================================================
+\section{Question 1 --- Matter waves, uncertainty and measurement}
+
+\subsection{(i) de Broglie wavelength of an electron}
+
+For a non-relativistic particle,
+\[
+p=m_ev,
+\]
+and the de Broglie relation is
+\[
+\lambda=\frac{h}{p}.
+\]
+
+The electron travels at
+\[
+v=\frac{c}{137}.
+\]
+
+Therefore
+\[
+\lambda
+=
+\frac{h}{m_ec/137}
+=
+\frac{137h}{m_ec}.
+\]
+
+Using
+\[
+h=6.626\times10^{-34}\ \mathrm{J\,s},
+\qquad
+m_e=9.109\times10^{-31}\ \mathrm{kg},
+\qquad
+c=2.998\times10^8\ \mathrm{m\,s^{-1}},
+\]
+gives
+\[
+\lambda
+=
+\frac{137(6.626\times10^{-34})}
+{(9.109\times10^{-31})(2.998\times10^8)}
+\approx3.3\times10^{-10}\ \mathrm m.
+\]
+
+Thus
+\[
+\boxed{\lambda\approx3.3\times10^{-10}\ \mathrm m}.
+\]
+
+The supplied solution also checks that using the relativistic momentum makes no
+significant difference at this speed to the quoted precision.
+
+\subsection{(ii) Equal de Broglie wavelengths for an electron and neutron}
+
+If
+\[
+\lambda_e=\lambda_n,
+\]
+then
+\[
+\frac{h}{p_e}=\frac{h}{p_n},
+\]
+so
+\[
+p_e=p_n.
+\]
+
+Using classical momentum,
+\[
+m_ev_e=m_nv_n.
+\]
+
+Therefore
+\[
+\boxed{
+\frac{v_e}{v_n}=\frac{m_n}{m_e}
+}.
+\]
+
+Numerically,
+\[
+\frac{v_e}{v_n}
+=
+\frac{1.6749\times10^{-27}}
+{9.109\times10^{-31}}
+\approx1837.
+\]
+
+Hence
+\[
+\boxed{\frac{v_e}{v_n}\approx1837}.
+\]
+
+The classical kinetic energy is
+\[
+E=\frac{p^2}{2m}.
+\]
+
+Since the momenta are equal,
+\[
+\frac{E_e}{E_n}
+=
+\frac{m_n}{m_e}
+\approx1837.
+\]
+
+Thus
+\[
+\boxed{\frac{E_e}{E_n}\approx1837}.
+\]
+
+So for equal de Broglie wavelength, the electron travels about $1837$ times
+faster and has about $1837$ times the kinetic energy of the neutron.
+
+\subsection{(iii) Range and lifetime of a $Z$ boson}
+
+The problem gives
+\[
+\Delta x\,\Delta p\approx\frac{\hbar}{2},
+\qquad
+\Delta E\,\Delta t\approx\frac{\hbar}{2},
+\]
+with
+\[
+\Delta p\approx mc,
+\qquad
+\Delta E\approx mc^2.
+\]
+
+Hence
+\[
+\Delta x\approx\frac{\hbar}{2mc},
+\]
+and
+\[
+\Delta t\approx\frac{\hbar}{2mc^2}.
+\]
+
+The mass of the $Z$ boson is
+\[
+m=\frac{91.2\ \mathrm{GeV}}{c^2}.
+\]
+
+Converting this to kilograms,
+\[
+m
+=
+\frac{91.2\times10^9(1.602\times10^{-19})}
+{(2.998\times10^8)^2}
+\approx1.626\times10^{-25}\ \mathrm{kg}.
+\]
+
+Therefore
+\[
+\Delta x
+\approx
+\frac{6.626\times10^{-34}}
+{2(1.626\times10^{-25})(2.998\times10^8)}
+\approx1.08\times10^{-17}\ \mathrm m.
+\]
+
+Thus
+\[
+\boxed{\Delta x\approx1.08\times10^{-17}\ \mathrm m}.
+\]
+
+Similarly,
+\[
+\Delta t
+\approx
+\frac{6.626\times10^{-34}}
+{2(1.626\times10^{-25})(2.998\times10^8)^2}
+\approx3.61\times10^{-27}\ \mathrm s.
+\]
+
+Hence
+\[
+\boxed{\Delta t\approx3.61\times10^{-27}\ \mathrm s}.
+\]
+
+These scales are far below ordinary atomic dimensions and timescales.
+
+\subsection{(iv) Verifying a solution of the wave equation}
+
+Consider
+\[
+\psi(x,t)=A\sin(kx-\omega t).
+\]
+
+The spatial derivatives are
+\[
+\frac{\partial\psi}{\partial x}
+=
+kA\cos(kx-\omega t),
+\]
+and therefore
+\[
+\frac{\partial^2\psi}{\partial x^2}
+=
+-k^2A\sin(kx-\omega t)
+=
+-k^2\psi.
+\]
+
+The time derivatives are
+\[
+\frac{\partial\psi}{\partial t}
+=
+-\omega A\cos(kx-\omega t),
+\]
+and
+\[
+\frac{\partial^2\psi}{\partial t^2}
+=
+-\omega^2A\sin(kx-\omega t)
+=
+-\omega^2\psi.
+\]
+
+Now
+\[
+k=\frac{2\pi}{\lambda},
+\qquad
+\omega=2\pi f,
+\qquad
+c=f\lambda.
+\]
+
+Thus
+\[
+\omega=ck,
+\]
+so
+\[
+\omega^2=c^2k^2.
+\]
+
+Therefore
+\[
+\frac{\partial^2\psi}{\partial t^2}
+=
+-c^2k^2\psi
+=
+c^2\frac{\partial^2\psi}{\partial x^2}.
+\]
+
+Hence
+\[
+\boxed{
+\frac{\partial^2\psi}{\partial x^2}
+=
+\frac{1}{c^2}
+\frac{\partial^2\psi}{\partial t^2}
+},
+\]
+which is precisely the one-dimensional wave equation.
+
+\subsection{(v) Wavefunction collapse and the double-slit experiment}
+
+In an electron double-slit experiment, electrons are detected individually on a
+screen, but after many electrons have passed through the apparatus, an
+interference pattern develops. The electrons therefore exhibit wave-like
+behaviour.
+
+The de Broglie wavelength of the electrons determines the characteristic
+diffraction scale. If the electrons are accelerated through a voltage $V$, their
+classical kinetic energy is
+\[
+E=eV,
+\]
+and, using
+\[
+E=\frac{p^2}{2m},
+\]
+their wavelength is
+\[
+\lambda
+=
+\frac{h}{p}
+=
+\frac{h}{\sqrt{2meV}}.
+\]
+
+The double slit produces an interference pattern because the wavefunction
+contains contributions associated with both possible paths.
+
+If the electron is instead observed in a way that determines which slit it
+passed through, the two-path superposition is destroyed. The wavefunction
+collapses onto the corresponding measurement eigenstate, and the interference
+pattern disappears.
+
+Thus the act of measurement changes the state being measured: before the
+which-path measurement, the electron is described by a superposition of the
+possible paths; after the measurement, it has a definite measured path.
+
+\subsection{(vi) Classical kinetic energy in terms of momentum}
+
+Classically,
+\[
+E=\frac12mv^2
+\]
+and
+\[
+p=mv.
+\]
+
+Therefore
+\[
+v=\frac pm.
+\]
+
+Substituting,
+\[
+E
+=
+\frac12m\left(\frac pm\right)^2
+=
+\frac12m\frac{p^2}{m^2}.
+\]
+
+Hence
+\[
+\boxed{E=\frac{p^2}{2m}}.
+\]
+
+For comparison, the relativistic energy--momentum relation is
+\[
+E^2=p^2c^2+m^2c^4,
+\]
+or
+\[
+\boxed{E=\sqrt{p^2c^2+m^2c^4}},
+\]
+which reduces to $E=pc$ for a photon.
+
+\subsection{(vii) Neutron diffraction}
+
+The atomic lattice spacing is
+\[
+s=2.15\times10^{-10}\ \mathrm m.
+\]
+We interpret the stated $30^\circ$ angular spacing as the angle of the first
+diffraction maximum from the central maximum, consistent with the supplied
+solution. Thus
+\[
+\theta_1=30^\circ.
+\]
+
+For first-order Bragg diffraction,
+\[
+s\sin\theta_1=n\lambda,
+\]
+with $n=1$. Therefore
+\[
+\lambda=s\sin30^\circ=\frac{s}{2},
+\]
+so
+\[
+\boxed{\lambda=\frac{s}{2}}.
+\]
+
+Thus
+\[
+\lambda
+=
+\frac{2.15\times10^{-10}}{2}
+=
+1.08\times10^{-10}\ \mathrm m.
+\]
+
+Hence
+\[
+\boxed{\lambda\approx1.08\times10^{-10}\ \mathrm m}.
+\]
+
+Using
+\[
+p=\frac h\lambda
+\]
+and
+\[
+E=\frac{p^2}{2m_n},
+\]
+we obtain
+\[
+E
+=
+\frac{h^2}{2m_n\lambda^2}.
+\]
+
+Numerically,
+\[
+E\approx0.071\ \mathrm{eV}.
+\]
+
+Therefore
+\[
+\boxed{E\approx0.071\ \mathrm{eV}}.
+\]
+
+The neutron speed follows from
+\[
+p=m_nv,
+\]
+so
+\[
+v=\frac{h}{m_n\lambda}.
+\]
+
+Hence
+\[
+\boxed{v\approx3.68\times10^3\ \mathrm{m\,s^{-1}}}.
+\]
+
+The supplied solution also compares this energy with the thermal energy scale
+\[
+\frac32k_BT
+\]
+at room temperature and notes that the neutron energy is of the same order.
+
+\subsection{(viii) Photoelectric effect and an equal de Broglie wavelength}
+
+For silver,
+\[
+\phi=4.3\ \mathrm{eV},
+\]
+and the maximum photoelectron kinetic energy is
+\[
+K_{\max}=5.1\ \mathrm{eV}.
+\]
+
+The photoelectric equation is
+\[
+K_{\max}=\frac{hc}{\lambda}-\phi.
+\]
+
+Therefore
+\[
+\lambda
+=
+\frac{hc}{K_{\max}+\phi}.
+\]
+
+Using
+\[
+hc\approx1240\ \mathrm{eV\,nm},
+\]
+we find
+\[
+\lambda
+=
+\frac{1240}{5.1+4.3}
+\approx131.9\ \mathrm{nm}.
+\]
+
+Thus
+\[
+\boxed{\lambda\approx131.9\ \mathrm{nm}}.
+\]
+
+Now consider an electron with the same de Broglie wavelength. Its kinetic energy is
+\[
+E_e=\frac{p^2}{2m_e},
+\]
+with
+\[
+p=\frac h\lambda.
+\]
+
+Hence
+\[
+E_e
+=
+\frac{h^2}{2m_e\lambda^2}.
+\]
+
+Substitution gives
+\[
+\boxed{E_e\approx8.65\times10^{-5}\ \mathrm{eV}}.
+\]
+
+Using the wavelength above gives
+\[
+E_e\approx8.65\times10^{-5}\ \mathrm{eV},
+\]
+consistent with the supplied handwritten solution. This illustrates the enormous
+difference between the energy of a UV photon and the kinetic energy of a
+non-relativistic electron having the same wavelength.
+
+\subsection{(ix) Electron microscope resolution}
+
+The resolution is approximately the electron wavelength:
+\[
+\lambda\approx\Delta x.
+\]
+
+Given
+\[
+\Delta x=0.42\ \mathrm{nm},
+\]
+we therefore require
+\[
+\lambda\approx0.42\ \mathrm{nm}.
+\]
+
+Using
+\[
+E=\frac{h^2}{2m_e\lambda^2},
+\]
+we obtain
+\[
+E
+=
+\frac{(6.626\times10^{-34})^2}
+{2(9.109\times10^{-31})(0.42\times10^{-9})^2}.
+\]
+
+Converting to electron-volts,
+\[
+\boxed{E\approx8.53\ \mathrm{eV}}.
+\]
+
+Equivalently, if the electron is accelerated through a voltage $V$, then
+\[
+E=eV,
+\]
+and the non-relativistic relation becomes
+\[
+\boxed{
+\frac{\lambda}{\mathrm{nm}}
+\approx
+\frac{1.23}{\sqrt{V}}
+},
+\]
+where $V$ is measured in volts.
+
+For larger accelerating voltages, relativistic corrections become important. The
+supplied solution gives
+\[
+\boxed{
+\frac{\lambda}{\mathrm{nm}}
+\approx
+\frac{1.23}
+{\sqrt{V}\sqrt{1+9.78\times10^{-7}V}}
+}
+\]
+as the corresponding relativistic expression.
+
+\subsection{(x) Time and spatial extent of beta decay}
+
+The emitted electron has energy
+\[
+\Delta E=5\ \mathrm{MeV}.
+\]
+
+From the energy-time uncertainty principle,
+\[
+\Delta E\,\Delta t\gtrsim\frac{\hbar}{2},
+\]
+so
+\[
+\Delta t
+\gtrsim
+\frac{\hbar}{2\Delta E}.
+\]
+
+Therefore
+\[
+\boxed{\Delta t\gtrsim6.58\times10^{-23}\ \mathrm s}.
+\]
+
+For the spatial extent, the problem assumes
+\[
+\Delta p\approx\sqrt{2m_e\Delta E}.
+\]
+
+Thus
+\[
+\Delta x
+\gtrsim
+\frac{\hbar}{2\Delta p}
+=
+\frac{\hbar}
+{2\sqrt{2m_e\Delta E}}.
+\]
+
+Substitution gives
+\[
+\boxed{\Delta x\gtrsim4.36\times10^{-14}\ \mathrm m}.
+\]
+
+This is a nuclear-scale distance, consistent with the short-range nature of the
+process.
+
+% ============================================================
+\section{Question 2 --- Particle in an infinite potential box}
+
+A particle of mass $m$ is confined to
+\[
+0\le x\le a
+\]
+with
+\[
+V(x)=
+\begin{cases}
+0, & 0<x<a,\\
+\infty, & x\le0\ \text{or}\ x\ge a.
+\end{cases}
+\]
+
+\subsection{(i) Standing-wave solutions}
+
+The infinite potential walls mean that the particle cannot exist outside the
+interval $0<x<a$. Therefore the wavefunction must vanish at the walls:
+\[
+\psi(0,t)=0,
+\qquad
+\psi(a,t)=0.
+\]
+
+A standing wave satisfying the first boundary condition can be written as
+\[
+\psi(x,t)
+=
+A_n\sin\left(\frac{n\pi x}{a}\right)\cos\omega t.
+\]
+
+At $x=a$,
+\[
+\sin(n\pi)=0
+\]
+only when
+\[
+\boxed{n=1,2,3,\ldots}.
+\]
+
+Thus $n$ must be a positive integer.
+
+The wavelength is related to the box length by
+\[
+\frac{n\lambda_n}{2}=a,
+\]
+so
+\[
+\lambda_n=\frac{2a}{n}.
+\]
+
+Therefore
+\[
+k_n=\frac{2\pi}{\lambda_n}
+=
+\frac{n\pi}{a}.
+\]
+
+The standing-wave picture is natural because the infinitely high walls impose
+fixed nodes at the two ends of the box.
+
+\subsection{(ii) Energy eigenvalues}
+
+Inside the box,
+\[
+V=0,
+\]
+so the time-independent Schrödinger equation is
+\[
+-\frac{\hbar^2}{2m}\frac{\partial^2\psi}{\partial x^2}
+=
+E\psi.
+\]
+
+For
+\[
+\psi=A_n\sin\left(\frac{n\pi x}{a}\right),
+\]
+we have
+\[
+\frac{\partial^2\psi}{\partial x^2}
+=
+-\left(\frac{n\pi}{a}\right)^2\psi.
+\]
+
+Therefore
+\[
+\frac{\hbar^2}{2m}
+\left(\frac{n\pi}{a}\right)^2\psi
+=
+E\psi.
+\]
+
+Hence
+\[
+\boxed{
+E_n=\frac{\hbar^2\pi^2n^2}{2ma^2}
+}.
+\]
+
+For a proton,
+\[
+m=m_p=1.6726\times10^{-27}\ \mathrm{kg},
+\]
+and
+\[
+a=0.47\times10^{-15}\ \mathrm m.
+\]
+
+Substitution gives
+\[
+E_n\approx927.2\,n^2\ \mathrm{MeV}.
+\]
+
+Thus for the ground state,
+\[
+\boxed{E_1\approx927.2\ \mathrm{MeV}}.
+\]
+
+The proton rest-mass energy is
+\[
+m_pc^2\approx938.4\ \mathrm{MeV}.
+\]
+
+Therefore
+\[
+\boxed{\frac{E_1}{m_pc^2}\approx0.988}.
+\]
+
+The ground-state confinement energy is therefore almost equal to the proton
+rest-mass energy. The non-relativistic Schrödinger result is consequently outside
+its regime of validity, but the numerical comparison is exactly what the
+question asks for.
+
+\subsection{(iii) Time dependence and normalisation}
+
+The factor $\cos\omega t$ is a real representation of a standing-wave oscillation,
+but the Schrödinger wavefunction is generally complex. For a stationary energy
+eigenstate, the correct time dependence is
+\[
+e^{-iEt/\hbar}.
+\]
+
+Thus
+\[
+\psi_n(x,t)
+=
+A_ne^{-iE_nt/\hbar}
+\sin\left(\frac{n\pi x}{a}\right).
+\]
+
+The Born interpretation requires
+\[
+\int_{-\infty}^{\infty}|\psi|^2\,dx=1.
+\]
+
+Since the wavefunction is zero outside the box,
+\[
+\int_0^a|\psi|^2\,dx=1.
+\]
+
+The phase factors cancel:
+\[
+|\psi|^2
+=
+A_n^2
+\sin^2\left(\frac{n\pi x}{a}\right).
+\]
+
+Hence
+\[
+A_n^2
+\int_0^a
+\sin^2\left(\frac{n\pi x}{a}\right)\,dx
+=1.
+\]
+
+Using
+\[
+\int_0^a
+\sin^2\left(\frac{n\pi x}{a}\right)\,dx
+=
+\frac a2,
+\]
+we find
+\[
+A_n^2\frac a2=1,
+\]
+so
+\[
+\boxed{A_n=\sqrt{\frac2a}}.
+\]
+
+Therefore the normalised stationary state is
+\[
+\boxed{
+\psi_n(x,t)
+=
+\sqrt{\frac2a}\,
+e^{-iE_nt/\hbar}
+\sin\left(\frac{n\pi x}{a}\right)
+}
+\]
+for $0<x<a$.
+
+\subsection{(iv) Momentum expectation values}
+
+A stationary standing wave is a superposition of waves travelling in opposite
+directions. Consequently the average momentum is zero:
+\[
+\boxed{\langle p\rangle=0}.
+\]
+
+The energy is
+\[
+E=\frac{p^2}{2m},
+\]
+so
+\[
+p^2=2mE.
+\]
+
+Using
+\[
+E_n=\frac{\hbar^2\pi^2n^2}{2ma^2},
+\]
+we obtain
+\[
+\langle p^2\rangle
+=
+2mE_n
+=
+\frac{\hbar^2\pi^2n^2}{a^2}.
+\]
+
+Thus
+\[
+\boxed{
+\langle p^2\rangle
+=
+\frac{\hbar^2\pi^2n^2}{a^2}
+}.
+\]
+
+Since $\langle p\rangle=0$,
+\[
+\Delta p
+=
+\sqrt{\langle p^2\rangle-\langle p\rangle^2}
+=
+\frac{\hbar n\pi}{a}.
+\]
+
+\subsection{(v) Position expectation values}
+
+The expectation value of position is
+\[
+\langle x\rangle
+=
+\int_0^a x|\psi|^2\,dx.
+\]
+
+Using the normalised wavefunction,
+\[
+\langle x\rangle
+=
+\frac2a
+\int_0^a
+x\sin^2\left(\frac{n\pi x}{a}\right)\,dx.
+\]
+
+Using
+\[
+\int x\sin^2(\alpha x)\,dx
+=
+\frac{x^2}{4}
+-\frac{x\sin(2\alpha x)}{4\alpha}
+-\frac{\cos(2\alpha x)}{8\alpha^2}
++C,
+\]
+with
+\[
+\alpha=\frac{n\pi}{a},
+\]
+and the identities
+\[
+\sin(2n\pi)=0,
+\qquad
+\cos(2n\pi)=1,
+\]
+we obtain
+\[
+\boxed{\langle x\rangle=\frac a2}.
+\]
+
+For the second moment,
+\[
+\langle x^2\rangle
+=
+\frac2a
+\int_0^a
+x^2\sin^2\left(\frac{n\pi x}{a}\right)\,dx.
+\]
+
+Using the corresponding integral supplied on the problem sheet gives
+\[
+\boxed{
+\langle x^2\rangle
+=
+\frac{a^2}{3}
+\left(
+1-\frac{3}{2n^2\pi^2}
+\right)
+}.
+\]
+
+Therefore
+\[
+(\Delta x)^2
+=
+\langle x^2\rangle-\langle x\rangle^2.
+\]
+
+Hence
+\[
+(\Delta x)^2
+=
+\frac{a^2}{3}
+\left(
+1-\frac{3}{2n^2\pi^2}
+\right)
+-\frac{a^2}{4}.
+\]
+
+Simplifying,
+\[
+(\Delta x)^2
+=
+\frac{a^2}{12}
+-\frac{a^2}{2n^2\pi^2}.
+\]
+
+Thus
+\[
+\boxed{
+\Delta x
+=
+\frac{a}{2\pi}
+\sqrt{\frac{n^2\pi^2}{3}-2}
+}.
+\]
+
+\subsection{(vi) Verification of the uncertainty principle}
+
+From part (iv),
+\[
+\Delta p
+=
+\frac{\hbar n\pi}{a}.
+\]
+
+Combining this with
+\[
+\Delta x
+=
+\frac{a}{2\pi}
+\sqrt{\frac{n^2\pi^2}{3}-2},
+\]
+we obtain
+\[
+\Delta x\,\Delta p
+=
+\frac{\hbar}{2}
+\sqrt{\frac{n^2\pi^2}{3}-2}.
+\]
+
+Therefore
+\[
+\boxed{
+\Delta x\,\Delta p
+=
+\frac{\hbar}{2}
+\sqrt{\frac{n^2\pi^2}{3}-2}
+}.
+\]
+
+The smallest possible value occurs for the smallest allowed quantum number,
+\[
+n=1.
+\]
+
+Then
+\[
+\sqrt{\frac{\pi^2}{3}-2}
+\approx1.14.
+\]
+
+Hence
+\[
+\Delta x\,\Delta p
+\approx1.14\frac{\hbar}{2}
+>
+\frac{\hbar}{2}.
+\]
+
+Therefore every allowed particle-in-a-box state satisfies
+\[
+\boxed{
+\Delta x\,\Delta p\ge\frac{\hbar}{2}
+},
+\]
+which verifies the Heisenberg uncertainty principle.
+
+% ============================================================
+\section{Question 3 --- Entangled photons and quantum cryptography}
+
+Two vertically polarised entangled photons travel in opposite directions to
+detectors $A$ and $B$. The detectors are oriented at angles $\theta$ and $\phi$.
+
+The problem asks first for a classical calculation in which the measurements are
+treated as independent, and then for the Copenhagen interpretation in which the
+first measurement affects the state of the second photon.
+
+\subsection{Classical calculation}
+
+Using Malus' law, the probabilities for detector $A$ are
+\[
+P(X_A)=\cos^2\theta,
+\qquad
+P(Y_A)=\sin^2\theta.
+\]
+
+Similarly,
+\[
+P(X_B)=\cos^2\phi,
+\qquad
+P(Y_B)=\sin^2\phi.
+\]
+
+The two detectors give different outcomes in the two cases
+\[
+X_A,Y_B
+\]
+and
+\[
+Y_A,X_B.
+\]
+
+Assuming the measurements are independent,
+\[
+P_{\rm classical}(\mathrm{mismatch})
+=
+P(X_A)P(Y_B)+P(Y_A)P(X_B).
+\]
+
+Therefore
+\[
+\boxed{
+P_{\rm classical}
+=
+\cos^2\theta\sin^2\phi
++
+\sin^2\theta\cos^2\phi
+}.
+\]
+
+For
+\[
+\theta=-45^\circ,
+\qquad
+\phi=30^\circ,
+\]
+we have
+\[
+\cos^2(-45^\circ)=\sin^2(-45^\circ)=\frac12,
+\]
+and
+\[
+\sin^2(30^\circ)=\frac14,
+\qquad
+\cos^2(30^\circ)=\frac34.
+\]
+
+Hence
+\[
+P_{\rm classical}
+=
+\frac12\frac14
++
+\frac12\frac34
+=
+\frac12.
+\]
+
+Thus
+\[
+\boxed{P_{\rm classical}(\mathrm{mismatch})=\frac12}.
+\]
+
+\subsection{Copenhagen interpretation}
+
+Suppose detector $A$ measures first.
+
+If $A$ measures $X_A$, the entangled state collapses so that the corresponding
+polarisation of the photon arriving at $B$ is referenced to the $A$ measurement
+axis. The angle between the $A$ and $B$ measurement axes is
+\[
+\phi-\theta.
+\]
+
+Thus the conditional probabilities for detector $B$ involve
+\[
+\cos^2(\phi-\theta)
+\]
+and
+\[
+\sin^2(\phi-\theta).
+\]
+
+There are two possibilities for the first measurement:
+\[
+P(X_A)=\cos^2\theta,
+\qquad
+P(Y_A)=\sin^2\theta.
+\]
+
+The probability of a mismatch is therefore
+\[
+P_{\rm quantum}(\mathrm{mismatch})
+=
+\cos^2\theta\sin^2(\phi-\theta)
++
+\sin^2\theta\cos^2(\phi-\theta).
+\]
+
+This simplifies to
+\[
+\boxed{
+P_{\rm quantum}(\mathrm{mismatch})
+=
+\sin^2(\phi-\theta)
+}.
+\]
+
+For
+\[
+\theta=-45^\circ,
+\qquad
+\phi=30^\circ,
+\]
+the relative angle is
+\[
+\phi-\theta
+=
+30^\circ-(-45^\circ)
+=
+75^\circ.
+\]
+
+Therefore
+\[
+P_{\rm quantum}
+=
+\sin^2(75^\circ).
+\]
+
+Using
+\[
+\sin75^\circ
+=
+\sin(30^\circ+45^\circ)
+=
+\frac{1}{2\sqrt2}(1+\sqrt3),
+\]
+we obtain
+\[
+P_{\rm quantum}
+=
+\frac{(1+\sqrt3)^2}{8}
+\approx0.933.
+\]
+
+Hence
+\[
+\boxed{
+P_{\rm quantum}(\mathrm{mismatch})\approx0.933
+}.
+\]
+
+The ratio of the quantum prediction to the classical prediction is
+\[
+\frac{P_{\rm quantum}}{P_{\rm classical}}
+=
+\frac{(1+\sqrt3)^2/8}{1/2}
+=
+\frac{(1+\sqrt3)^2}{4}
+\approx1.87.
+\]
+
+Thus
+\[
+\boxed{
+\frac{P_{\rm quantum}}{P_{\rm classical}}\approx1.87
+}.
+\]
+
+The quantum result is therefore substantially different from the independent
+classical prediction. This difference is the basis of the quantum-cryptographic
+idea described in the problem sheet: the statistics of polarisation measurements
+can reveal whether an eavesdropper has disturbed the transmitted quantum states.
+
+\end{document}

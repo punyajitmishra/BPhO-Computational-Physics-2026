@@ -1,0 +1,1334 @@
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BPhO Computational Physics Challenge 2026}
+\rhead{Quantum Mechanics 2}
+\cfoot{\thepage}
+
+\title{\textbf{Quantum Mechanics 2}\\Worked Solutions}
+\author{BPhO Computational Physics Challenge 2026}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+This document gives worked solutions to the \emph{Quantum Mechanics 2} problem sheet.
+The calculations use the constants supplied on the sheet and have been checked against
+the accompanying BPhO solution document. The aim is to show the physical reasoning,
+mathematical derivations and numerical substitutions rather than simply state the final
+answers.
+
+% ============================================================
+\section{Question 1 --- The Caesium-133 clock transition}
+
+The definition of the SI second is based on radiation from Caesium-133 with frequency
+\[
+f=9\,192\,631\,770\ \mathrm{Hz}.
+\]
+
+\subsection{(i) Wavelength}
+
+For electromagnetic radiation,
+\[
+c=f\lambda,
+\]
+so
+\[
+\lambda=\frac{c}{f}.
+\]
+
+Using
+\[
+c=2.998\times10^8\ \mathrm{m\,s^{-1}},
+\]
+we obtain
+\[
+\lambda
+=
+\frac{2.998\times10^8}
+{9.192631770\times10^9}
+\approx3.26\times10^{-2}\ \mathrm m.
+\]
+
+Thus
+\[
+\boxed{\lambda\approx3.26\ \mathrm{cm}}.
+\]
+
+A wavelength of a few centimetres corresponds to the
+\[
+\boxed{\text{microwave}}
+\]
+region of the electromagnetic spectrum.
+
+\subsection{(ii) Energy change}
+
+A photon has energy
+\[
+E=hf.
+\]
+
+The energy in electron-volts is
+\[
+E_{\rm eV}=\frac{hf}{e}.
+\]
+
+Therefore
+\[
+E_{\rm eV}
+=
+\frac{(6.63\times10^{-34})(9.192631770\times10^9)}
+{1.60\times10^{-19}}
+\approx3.81\times10^{-5}\ \mathrm{eV}.
+\]
+
+Hence
+\[
+\boxed{\Delta E\approx3.81\times10^{-5}\ \mathrm{eV}}.
+\]
+
+This is an \emph{electronic} rather than a nuclear energy scale. The relevant
+transition is between very closely spaced atomic states of Caesium; nuclear
+transitions typically involve energies of order keV--MeV, vastly larger than this
+microwave transition.
+
+% ============================================================
+\section{Question 2 --- Photoelectric effect}
+
+The photoelectric equation is
+\[
+K_{\max}=hf-\phi,
+\]
+where $\phi$ is the work function.
+
+\subsection{(i) Work function}
+
+No electrons are emitted for wavelengths greater than \SI{300}{nm}. Thus the
+threshold wavelength is
+\[
+\lambda_0=\SI{300}{nm}.
+\]
+
+At threshold the emitted electron has zero kinetic energy:
+\[
+hf_0=\phi.
+\]
+
+Since
+\[
+f_0=\frac{c}{\lambda_0},
+\]
+we obtain
+\[
+\phi=\frac{hc}{\lambda_0}.
+\]
+
+Thus
+\[
+\phi
+=
+\frac{(6.63\times10^{-34})(2.998\times10^8)}
+{300\times10^{-9}}
+\approx6.63\times10^{-19}\ \mathrm J.
+\]
+
+Converting to electron-volts,
+\[
+\phi
+=
+\frac{6.63\times10^{-19}}
+{1.60\times10^{-19}}
+\approx4.14\ \mathrm{eV}.
+\]
+
+Therefore
+\[
+\boxed{\phi\approx4.14\ \mathrm{eV}}.
+\]
+
+\subsection{(ii) Photoelectron current}
+
+The incident laser has power
+\[
+P=100\ \mathrm W
+\]
+and wavelength
+\[
+\lambda=\SI{200}{nm}.
+\]
+
+The energy of each incident photon is
+\[
+E_\gamma=\frac{hc}{\lambda}.
+\]
+
+Hence
+\[
+E_\gamma
+=
+\frac{(6.63\times10^{-34})(2.998\times10^8)}
+{200\times10^{-9}}
+\approx9.94\times10^{-19}\ \mathrm J
+\]
+or
+\[
+E_\gamma\approx6.21\ \mathrm{eV}.
+\]
+
+The maximum kinetic energy of an emitted electron is therefore
+\[
+K_{\max}
+=
+E_\gamma-\phi
+\approx6.21-4.14
+=2.07\ \mathrm{eV}.
+\]
+
+In joules,
+\[
+K_{\max}\approx3.31\times10^{-19}\ \mathrm J.
+\]
+
+The problem states that the photoelectron current constitutes $10\%$ of the
+incident power, so the power carried by the emitted electrons is
+\[
+P_e=0.10(100)=10\ \mathrm W.
+\]
+
+Thus the electron emission rate is
+\[
+\dot N_e=\frac{P_e}{K_{\max}}
+\approx
+\frac{10}{3.31\times10^{-19}}
+\approx3.02\times10^{19}\ \mathrm{s^{-1}}.
+\]
+
+Assuming each electron contributes one elementary charge,
+\[
+I=e\dot N_e.
+\]
+
+Therefore
+\[
+I
+=
+(1.60\times10^{-19})(3.02\times10^{19})
+\approx4.83\ \mathrm A.
+\]
+
+Hence
+\[
+\boxed{I\approx4.8\ \mathrm A}.
+\]
+
+% ============================================================
+\section{Question 3 --- de Broglie wavelength of a water molecule}
+
+The problem gives the molecular kinetic energy as
+\[
+E=\frac32 k_BT.
+\]
+
+For water,
+\[
+\mathrm{H_2O}
+=
+{}^1_1\mathrm H_2+{}^{16}_8\mathrm O.
+\]
+
+Ignoring electron masses and binding-energy mass defects, the mass is
+\[
+m
+=
+2m_p+8m_p+8m_n.
+\]
+
+Thus
+\[
+m
+=
+10m_p+8m_n.
+\]
+
+Using
+\[
+m_p=1.6726\times10^{-27}\ \mathrm{kg},
+\qquad
+m_n=1.6749\times10^{-27}\ \mathrm{kg},
+\]
+gives
+\[
+m\approx3.0125\times10^{-26}\ \mathrm{kg}.
+\]
+
+At
+\[
+T=300\ \mathrm K,
+\]
+the kinetic energy is
+\[
+E
+=
+\frac32(1.38\times10^{-23})(300)
+\approx6.21\times10^{-21}\ \mathrm J.
+\]
+
+Using
+\[
+E=\frac{p^2}{2m},
+\]
+the momentum is
+\[
+p=\sqrt{2mE}.
+\]
+
+The de Broglie relation gives
+\[
+\lambda=\frac hp,
+\]
+so
+\[
+\lambda
+=
+\frac{h}{\sqrt{2mE}}
+=
+\frac{h}
+{\sqrt{2m(3k_BT/2)}}.
+\]
+
+Therefore
+\[
+\lambda
+=
+\frac{6.63\times10^{-34}}
+{\sqrt{
+2(3.0125\times10^{-26})
+(6.21\times10^{-21})
+}}
+\approx3.43\times10^{-11}\ \mathrm m.
+\]
+
+Thus
+\[
+\boxed{\lambda\approx3.43\times10^{-11}\ \mathrm m}
+\]
+or
+\[
+\boxed{\lambda\approx0.0343\ \mathrm{nm}}.
+\]
+
+This is much smaller than the size of an individual water molecule, illustrating why
+the wave nature of matter is difficult to observe for macroscopic objects.
+
+% ============================================================
+\section{Question 4 --- Relativistic electrons}
+
+The electron is accelerated until
+\[
+v=\frac c2.
+\]
+
+\subsection{(i) Accelerating voltage}
+
+\subsubsection*{Classical calculation}
+
+Classically,
+\[
+K=\frac12m_ev^2.
+\]
+
+Since an electron accelerated through a potential difference $V$ gains energy $eV$,
+\[
+eV=\frac12m_ev^2.
+\]
+
+Setting $v=c/2$,
+\[
+eV
+=
+\frac12m_e\frac{c^2}{4}
+=
+\frac{m_ec^2}{8}.
+\]
+
+Therefore
+\[
+V=\frac{m_ec^2}{8e}.
+\]
+
+Substitution gives
+\[
+V
+\approx6.40\times10^4\ \mathrm V.
+\]
+
+Hence
+\[
+\boxed{V_{\rm classical}\approx64\ \mathrm{kV}}.
+\]
+
+\subsubsection*{Relativistic calculation}
+
+The relativistic kinetic energy is
+\[
+K=(\gamma-1)m_ec^2,
+\]
+where
+\[
+\gamma=
+\frac{1}{\sqrt{1-v^2/c^2}}.
+\]
+
+For $v=c/2$,
+\[
+\gamma
+=
+\frac{1}{\sqrt{1-\frac14}}
+=
+\frac{2}{\sqrt3}
+\approx1.155.
+\]
+
+Therefore
+\[
+eV=(\gamma-1)m_ec^2,
+\]
+so
+\[
+V
+=
+\left(\frac{2}{\sqrt3}-1\right)
+\frac{m_ec^2}{e}.
+\]
+
+Numerically,
+\[
+\boxed{V_{\rm relativistic}\approx79.2\ \mathrm{kV}}.
+\]
+
+The relativistic result is noticeably larger because the classical expression
+underestimates the kinetic energy at this speed.
+
+\subsection{(ii) de Broglie wavelength}
+
+\subsubsection*{Classical momentum}
+
+Classically,
+\[
+p_{\rm cl}=m_ev.
+\]
+
+Thus
+\[
+\lambda_{\rm cl}
+=
+\frac{h}{m_ev}.
+\]
+
+For $v=c/2$,
+\[
+\lambda_{\rm cl}
+=
+\frac{6.63\times10^{-34}}
+{(9.109\times10^{-31})(c/2)}
+\approx4.86\times10^{-12}\ \mathrm m.
+\]
+
+Therefore
+\[
+\boxed{\lambda_{\rm cl}\approx4.86\times10^{-12}\ \mathrm m}.
+\]
+
+\subsubsection*{Relativistic momentum}
+
+The relativistic momentum is
+\[
+p=\gamma m_ev.
+\]
+
+Hence
+\[
+\lambda_{\rm rel}
+=
+\frac{h}{\gamma m_ev}.
+\]
+
+Using $\gamma=2/\sqrt3$,
+\[
+\lambda_{\rm rel}
+\approx4.20\times10^{-12}\ \mathrm m.
+\]
+
+Thus
+\[
+\boxed{\lambda_{\rm rel}\approx4.20\times10^{-12}\ \mathrm m}.
+\]
+
+The relativistic wavelength is shorter because the relativistic momentum is larger
+than the classical value at the same velocity.
+
+\subsection{(iii) Atomic lattice spacing}
+
+The electron beam is diffracted through an angle
+\[
+\theta=2^\circ.
+\]
+
+For first-order constructive interference,
+\[
+d\sin\theta=n\lambda,
+\]
+with
+\[
+n=1.
+\]
+
+Thus
+\[
+d=\frac{\lambda}{\sin2^\circ}.
+\]
+
+Using the more accurate relativistic wavelength,
+\[
+d
+=
+\frac{4.20\times10^{-12}}{\sin2^\circ}
+\approx1.20\times10^{-10}\ \mathrm m.
+\]
+
+Therefore
+\[
+\boxed{d\approx1.2\times10^{-10}\ \mathrm m}.
+\]
+
+This is of the expected order of magnitude for an atomic lattice spacing.
+
+% ============================================================
+\section{Question 5 --- Ionisation energies and the Bohr model}
+
+For a hydrogenic atom with nuclear charge $+Ze$ and one electron, the Bohr model
+gives
+\[
+E_n=-\frac{13.6Z^2}{n^2}\ \mathrm{eV}.
+\]
+
+Ionisation from the ground state therefore requires
+\[
+E_{\rm ion}=13.6Z^2\ \mathrm{eV}.
+\]
+
+For a photon of energy $E$,
+\[
+E=\frac{hc}{\lambda}.
+\]
+
+Using $hc\approx1242\ \mathrm{eV\,nm}$,
+\[
+\lambda_{\max}
+=
+\frac{1242}{E_{\rm ion}}\ \mathrm{nm}.
+\]
+
+\subsection{(i) Maximum ionising wavelength}
+
+\subsubsection*{(a) Hydrogen}
+
+For $Z=1$,
+\[
+E_{\rm ion}=13.6\ \mathrm{eV}.
+\]
+
+Therefore
+\[
+\lambda_{\max}
+=
+\frac{1242}{13.6}
+\approx91.3\ \mathrm{nm}.
+\]
+
+Thus
+\[
+\boxed{\lambda_{\max}(\mathrm H)\approx91.3\ \mathrm{nm}}.
+\]
+
+\subsubsection*{(b) Helium}
+
+For the one-electron hydrogenic approximation with $Z=2$,
+\[
+E_{\rm ion}=13.6(2)^2
+=54.4\ \mathrm{eV}.
+\]
+
+Hence
+\[
+\lambda_{\max}
+=
+\frac{1242}{54.4}
+\approx22.8\ \mathrm{nm}.
+\]
+
+Therefore
+\[
+\boxed{\lambda_{\max}(\mathrm{He})\approx22.8\ \mathrm{nm}}.
+\]
+
+This is specifically the hydrogenic approximation; a real neutral helium atom has
+two electrons, so the assumptions of the model do not apply directly.
+
+\subsubsection*{(c) Radon}
+
+For $Z=86$,
+\[
+E_{\rm ion}
+=
+13.6(86)^2
+\approx1.006\times10^5\ \mathrm{eV}.
+\]
+
+Thus
+\[
+\lambda_{\max}
+=
+\frac{1242}{1.006\times10^5}
+\approx1.24\times10^{-2}\ \mathrm{nm}.
+\]
+
+Therefore
+\[
+\boxed{\lambda_{\max}(\mathrm{Rn})\approx0.0124\ \mathrm{nm}}.
+\]
+
+Again, this is the formal hydrogenic prediction. For multi-electron atoms the
+electron--electron repulsion and screening make the one-electron Bohr model
+increasingly inappropriate.
+
+\subsection{(ii)(a) Comparison with measured ionisation energies}
+
+The measured molar ionisation energies are
+
+\[
+\begin{array}{lll}
+\mathrm H &: &1312.0\ \mathrm{kJ\,mol^{-1}},\\
+\mathrm{He}&: &2372.3\ \mathrm{kJ\,mol^{-1}},\\
+\mathrm{Rn}&: &1037\ \mathrm{kJ\,mol^{-1}}.
+\end{array}
+\]
+
+The hydrogen value is close to the Bohr prediction because hydrogen is genuinely
+a one-electron atom. For helium and radon, however, the simple $13.6Z^2$ prediction
+becomes increasingly poor.
+
+The fundamental issue is that the Bohr expression used above assumes a
+\emph{hydrogenic, one-electron atom}: the electron is moving in the Coulomb field of
+a nucleus with charge $+Ze$, without accounting for the other electrons.
+
+A measured ionisation energy for a neutral atom instead means removing one electron
+from the actual multi-electron atom. Electron--electron repulsion and shielding
+therefore have a major effect.
+
+For example, the formal Bohr prediction for radon is
+\[
+\sim100.6\ \mathrm{keV},
+\]
+whereas its measured first ionisation energy is only about
+\[
+10.8\ \mathrm{eV}.
+\]
+
+This enormous discrepancy demonstrates the failure of applying the hydrogenic
+formula directly to a many-electron atom.
+
+\subsection{(ii)(b) Photon wavelengths for the measured ionisation energies}
+
+The energy per atom corresponding to a molar ionisation energy $E_{\rm mol}$ is
+\[
+E=\frac{E_{\rm mol}}{N_A}.
+\]
+
+Equivalently, converting directly to electron-volts,
+\[
+E_{\rm eV}
+=
+\frac{E_{\rm mol}\times10^3}
+{N_Ae}.
+\]
+
+The wavelength is then
+\[
+\lambda=\frac{hc}{E}.
+\]
+
+\subsubsection*{Hydrogen}
+
+\[
+E
+=
+\frac{1312.0\times10^3}
+{6.022140857\times10^{23}}
+\approx2.18\times10^{-18}\ \mathrm J,
+\]
+giving
+\[
+\boxed{\lambda_{\mathrm H}\approx91.2\ \mathrm{nm}}.
+\]
+
+\subsubsection*{Helium}
+
+\[
+E
+=
+\frac{2372.3\times10^3}
+{6.022140857\times10^{23}},
+\]
+giving
+\[
+\boxed{\lambda_{\mathrm{He}}\approx50.5\ \mathrm{nm}}.
+\]
+
+\subsubsection*{Radon}
+
+\[
+E
+=
+\frac{1037\times10^3}
+{6.022140857\times10^{23}},
+\]
+giving
+\[
+\boxed{\lambda_{\mathrm{Rn}}\approx115\ \mathrm{nm}}.
+\]
+
+The measured wavelengths therefore differ dramatically from the hydrogenic
+prediction for the heavy, many-electron atom.
+
+% ============================================================
+\section{Question 6 --- FAST and photons from Andromeda}
+
+FAST has diameter
+\[
+D=500\ \mathrm m,
+\]
+so its collecting area is
+\[
+A=\pi\left(\frac D2\right)^2
+=\pi(250)^2.
+\]
+
+The distance to Andromeda is
+\[
+r=2\times10^{22}\ \mathrm m,
+\]
+and the power radiated at
+\[
+f=1420\ \mathrm{MHz}
+=1.420\times10^9\ \mathrm{Hz}
+\]
+is
+\[
+P_{\rm A}=8\times10^{27}\ \mathrm W.
+\]
+
+\subsection{(i) Photons received by FAST}
+
+Assuming isotropic radiation, the power flux at FAST is
+\[
+I_{\rm A}
+=
+\frac{P_{\rm A}}{4\pi r^2}.
+\]
+
+The power intercepted by FAST is
+\[
+P_{\rm FAST}
+=
+I_{\rm A}A.
+\]
+
+Combining these,
+\[
+P_{\rm FAST}
+=
+\frac{P_{\rm A}}{4\pi r^2}
+\pi\left(\frac D2\right)^2
+=
+\frac{P_{\rm A}}{4}
+\left(\frac{D}{2r}\right)^2.
+\]
+
+Numerically,
+\[
+P_{\rm FAST}\approx3.13\times10^{-13}\ \mathrm W.
+\]
+
+Each photon has energy
+\[
+E_\gamma=hf.
+\]
+
+Thus
+\[
+E_\gamma
+=
+(6.63\times10^{-34})(1.420\times10^9)
+\approx9.41\times10^{-25}\ \mathrm J.
+\]
+
+Therefore the number of photons received per second is
+\[
+\dot N_{\rm FAST}
+=
+\frac{P_{\rm FAST}}{hf}
+\approx3.3\times10^{11}\ \mathrm{s^{-1}}.
+\]
+
+Hence
+\[
+\boxed{\dot N_{\rm FAST}\approx3.3\times10^{11}\ \mathrm{photons\,s^{-1}}}.
+\]
+
+\subsection{(ii) DSLR exposure}
+
+The DSLR sensor has dimensions
+\[
+24\,\mathrm{mm}\times36\,\mathrm{mm},
+\]
+so its area is
+\[
+A_{\rm DSLR}
+=
+(24\times10^{-3})(36\times10^{-3})
+=
+8.64\times10^{-4}\ \mathrm{m^2}.
+\]
+
+With solar intensity
+\[
+I_\odot=100\ \mathrm{W\,m^{-2}},
+\]
+the incident power is
+\[
+P_{\rm DSLR}
+=
+I_\odot A_{\rm DSLR}
+=
+0.0864\ \mathrm W.
+\]
+
+For a shutter time of
+\[
+t=\frac1{500}\ \mathrm s,
+\]
+the received energy is
+\[
+E_{\rm DSLR}
+=
+P_{\rm DSLR}t
+=
+1.728\times10^{-4}\ \mathrm J.
+\]
+
+For sunlight of wavelength
+\[
+\lambda=500\ \mathrm{nm},
+\]
+the photon energy is
+\[
+E_\gamma
+=
+\frac{hc}{\lambda}
+\approx3.98\times10^{-19}\ \mathrm J.
+\]
+
+Thus the number of photons in the exposure is
+\[
+N_{\rm DSLR}
+=
+\frac{E_{\rm DSLR}}{E_\gamma}
+\approx4.35\times10^{14}.
+\]
+
+Therefore
+\[
+\boxed{N_{\rm DSLR}\approx4.35\times10^{14}\ \mathrm{photons}}.
+\]
+
+\subsection{(iii) Equivalent FAST exposure}
+
+FAST receives approximately
+\[
+3.3\times10^{11}\ \mathrm{photons\,s^{-1}}.
+\]
+
+The time needed to receive the same number of photons as the DSLR exposure is
+\[
+t_{\rm FAST}
+=
+\frac{N_{\rm DSLR}}{\dot N_{\rm FAST}}.
+\]
+
+Thus
+\[
+t_{\rm FAST}
+\approx
+\frac{4.35\times10^{14}}
+{3.3\times10^{11}}
+\approx1.32\times10^3\ \mathrm s.
+\]
+
+Therefore
+\[
+\boxed{t_{\rm FAST}\approx22\ \mathrm{minutes}}.
+\]
+
+The comparison is striking: although Andromeda is enormously luminous, its huge
+distance makes the photon flux arriving at Earth extremely small.
+
+% ============================================================
+\section{Question 7 --- Solar sail}
+
+The incident light has intensity
+\[
+I\ \mathrm{W\,m^{-2}}
+\]
+and the sail has area $A$.
+
+\subsection{(i) Impulse delivered per second}
+
+For a photon of wavelength $\lambda$, the de Broglie relation gives
+\[
+p=\frac{h}{\lambda}.
+\]
+
+When a photon is perfectly reflected, its momentum reverses direction. Therefore
+the change in momentum of the photon, and hence the impulse delivered to the sail,
+is
+\[
+\Delta p=2p=\frac{2h}{\lambda}.
+\]
+
+The energy of one photon is
+\[
+E_\gamma=hf=\frac{hc}{\lambda}.
+\]
+
+The number of photons arriving at the sail per second is therefore
+\[
+\dot N
+=
+\frac{IA}{hc/\lambda}
+=
+\frac{IA\lambda}{hc}.
+\]
+
+The impulse delivered per second is
+\[
+F
+=
+\dot N\Delta p.
+\]
+
+Hence
+\[
+F
+=
+\frac{IA\lambda}{hc}
+\frac{2h}{\lambda}
+=
+\boxed{\frac{2IA}{c}}.
+\]
+
+This is the radiation-pressure force for a perfectly reflecting sail.
+
+\subsection{(ii) Acceleration}
+
+Newton's second law gives
+\[
+F=ma.
+\]
+
+Therefore
+\[
+ma=\frac{2IA}{c},
+\]
+so
+\[
+\boxed{
+a=\frac{2IA}{mc}
+}.
+\]
+
+The corresponding radiation pressure is
+\[
+P_{\rm rad}=\frac FA=\boxed{\frac{2I}{c}}.
+\]
+
+\subsection{(iii) Numerical example}
+
+The spacecraft has mass
+\[
+m=10\ \mathrm{tonnes}=10^4\ \mathrm{kg},
+\]
+and the sail area is
+\[
+A=100\ \mathrm{km^2}=10^8\ \mathrm{m^2}.
+\]
+
+The intensity is
+\[
+I=1\ \mathrm{kW\,m^{-2}}=10^3\ \mathrm{W\,m^{-2}}.
+\]
+
+Thus
+\[
+a
+=
+\frac{2(10^3)(10^8)}
+{(10^4)(2.998\times10^8)}
+\approx6.67\times10^{-2}\ \mathrm{m\,s^{-2}}.
+\]
+
+Therefore
+\[
+\boxed{a\approx0.0667\ \mathrm{m\,s^{-2}}}.
+\]
+
+The target velocity is
+\[
+v=\frac{c}{100}.
+\]
+
+Assuming constant acceleration,
+\[
+t=\frac va
+=
+\frac{c/100}{a}.
+\]
+
+Hence
+\[
+t
+\approx
+\frac{2.998\times10^8}
+{100(0.0667)}
+\approx4.49\times10^7\ \mathrm s.
+\]
+
+Converting to years,
+\[
+t\approx1.42\ \mathrm{yr}.
+\]
+
+Thus
+\[
+\boxed{t\approx4.49\times10^7\ \mathrm s\approx1.4\ \mathrm{years}}.
+\]
+
+The problem explicitly notes that this constant-acceleration treatment eventually
+breaks down as relativistic effects become important.
+
+% ============================================================
+\section{Question 8 --- Stellar radiation and mass loss}
+
+\subsection{(i) Solar luminosity and mass loss}
+
+The Earth receives a maximum solar intensity of
+\[
+I=1361\ \mathrm{W\,m^{-2}}.
+\]
+
+At one astronomical unit,
+\[
+r=1.496\times10^{11}\ \mathrm m.
+\]
+
+Assuming the Sun radiates isotropically, its luminosity is
+\[
+L_\odot=4\pi r^2I.
+\]
+
+Thus
+\[
+L_\odot
+=
+4\pi(1.496\times10^{11})^2(1361)
+\approx3.83\times10^{26}\ \mathrm W.
+\]
+
+Hence
+\[
+\boxed{L_\odot\approx3.83\times10^{26}\ \mathrm W}.
+\]
+
+Over
+\[
+t=10^{10}\ \mathrm{yr},
+\]
+the radiated energy is
+\[
+E=L_\odot t.
+\]
+
+Using
+\[
+1\ \mathrm{yr}\approx365\times24\times3600\ \mathrm s,
+\]
+we obtain
+\[
+E\approx1.21\times10^{44}\ \mathrm J.
+\]
+
+Einstein's mass-energy relation gives
+\[
+E=\Delta mc^2,
+\]
+so
+\[
+\Delta m
+=
+\frac{E}{c^2}
+\approx1.34\times10^{27}\ \mathrm{kg}.
+\]
+
+The Sun's mass is
+\[
+M_\odot=1.989\times10^{30}\ \mathrm{kg},
+\]
+so the percentage mass loss is
+\[
+\frac{\Delta m}{M_\odot}\times100
+\approx0.067\%.
+\]
+
+Therefore
+\[
+\boxed{\text{solar mass loss over this period}\approx0.07\%}.
+\]
+
+\subsection{(ii) Sirius}
+
+Sirius has
+\[
+T_S=9940\ \mathrm K,
+\qquad
+R_S=1.711R_\odot,
+\qquad
+M_S=2.02M_\odot.
+\]
+
+\subsubsection*{(a) Radiation received at Earth's orbit}
+
+For the same distance from the star, the received intensity is proportional to
+\[
+T^4R^2.
+\]
+
+Therefore
+\[
+\frac{I_S}{I_\odot}
+=
+\left(\frac{T_S}{T_\odot}\right)^4
+\left(\frac{R_S}{R_\odot}\right)^2.
+\]
+
+Thus
+\[
+I_S
+=
+1361
+\left(\frac{9940}{5778}\right)^4
+(1.711)^2.
+\]
+
+This gives
+\[
+\boxed{I_S\approx3.49\times10^4\ \mathrm{W\,m^{-2}}}
+\]
+or approximately
+\[
+\boxed{34.9\ \mathrm{kW\,m^{-2}}}.
+\]
+This is also obtained directly from the luminosity of Sirius divided by
+$4\pi(1\,\mathrm{AU})^2$.
+
+\subsubsection*{(b) Luminosity of Sirius}
+
+The Stefan--Boltzmann law gives
+\[
+L_S=4\pi R_S^2\sigma T_S^4.
+\]
+
+Relative to the Sun,
+\[
+\frac{L_S}{L_\odot}
+=
+\left(\frac{R_S}{R_\odot}\right)^2
+\left(\frac{T_S}{T_\odot}\right)^4.
+\]
+
+Therefore
+\[
+L_S
+=
+3.83\times10^{26}
+(1.711)^2
+\left(\frac{9940}{5778}\right)^4.
+\]
+
+Hence
+\[
+\boxed{L_S\approx9.82\times10^{27}\ \mathrm{J\,s^{-1}}}
+\]
+or
+\[
+\boxed{L_S\approx9.82\times10^{27}\ \mathrm W}.
+\]
+
+\subsubsection*{(c) Lifetime}
+
+The problem asks us to assume that Sirius loses the same \emph{fraction} of its
+mass over its lifetime as the Sun does during its main-sequence phase. Thus the
+fractional mass loss is approximately
+\[
+f=0.07\%=7.0\times10^{-4}.
+\]
+For Sirius, the mass converted to radiated energy is therefore
+\[
+\Delta M_S=fM_S=f(2.02M_\odot).
+\]
+Using $E=\Delta Mc^2$ and the Sirius luminosity from part (b),
+\[
+t_S=\frac{\Delta M_Sc^2}{L_S}.
+\]
+Hence
+\[
+t_S
+=\frac{(7.0\times10^{-4})(2.02)(1.989\times10^{30})(2.998\times10^8)^2}
+{9.82\times10^{27}}
+\approx2.57\times10^{16}\,\mathrm{s}.
+\]
+Converting to years,
+\[
+\boxed{t_S\approx8.2\times10^8\,\mathrm{yr}\approx0.82\,\mathrm{billion\ years}}.
+\]
+This is not a realistic stellar lifetime calculation: real stellar evolution changes the
+luminosity, composition and mass-loss rate over time. The result follows from the
+specific constant-fractional-mass-loss assumption in the question.
+
+\subsection{(iii) DogStar heating elements}
+
+A $10\,\mathrm{m^2}$ panel at one astronomical unit from Sirius receives power
+\[
+P=I_S A.
+\]
+
+Using the irradiance found in part (a),
+\[
+I_S\approx3.49\times10^4\,\mathrm{W\,m^{-2}},
+\]
+we find
+\[
+P
+\approx
+(3.49\times10^4)(10)
+\approx3.49\times10^5\,\mathrm W.
+\]
+Thus the heating elements are idealised as having an available power of
+\[
+\boxed{P\approx3.49\times10^5\,\mathrm W}.
+\]
+
+To boil one litre of water from $20^\circ\mathrm C$ to $100^\circ\mathrm C$,
+\[
+Q=mc\Delta T.
+\]
+
+With
+\[
+m\approx1\ \mathrm{kg},
+\qquad
+c=4181\ \mathrm{J\,kg^{-1}\,K^{-1}},
+\qquad
+\Delta T=80\ \mathrm K,
+\]
+we obtain
+\[
+Q
+=
+(1)(4181)(80)
+=
+3.345\times10^5\ \mathrm J.
+\]
+
+Using the supplied solution's power estimate,
+\[
+P\approx3.49\times10^5\ \mathrm W,
+\]
+the heating time is
+\[
+t=\frac QP
+\approx
+\frac{3.345\times10^5}{3.49\times10^5}
+\approx0.96\ \mathrm s.
+\]
+
+Therefore
+\[
+\boxed{t\approx1\ \mathrm s}.
+\]
+
+This ignores heat losses, the finite heat capacity of the container, evaporation,
+and the energy required to maintain the water at its boiling point; it is therefore
+an idealised minimum heating time.
+
+% ============================================================
+\section*{Summary of numerical results}
+
+\begin{center}
+\small
+\begin{tabular}{p{0.17\textwidth}p{0.70\textwidth}}
+\toprule
+\textbf{Part} & \textbf{Result}\\
+\midrule
+1(i) & $\lambda\approx3.26\,\mathrm{cm}$, microwave\\
+1(ii) & $\Delta E\approx3.81\times10^{-5}\,\mathrm{eV}$\\
+2(i) & $\phi\approx4.14\,\mathrm{eV}$\\
+2(ii) & $I\approx4.8\,\mathrm A$\\
+3 & $\lambda_{\rm H_2O}\approx3.43\times10^{-11}\,\mathrm m$\\
+4(i) & $V_{\rm cl}\approx64\,\mathrm{kV}$; $V_{\rm rel}\approx79.2\,\mathrm{kV}$\\
+4(ii) & $\lambda_{\rm cl}\approx4.86\,\mathrm{pm}$; $\lambda_{\rm rel}\approx4.20\,\mathrm{pm}$\\
+4(iii) & $d\approx1.2\times10^{-10}\,\mathrm m$\\
+5(i) & $\lambda_{\rm H}\approx91.3\,\mathrm{nm}$; $\lambda_{\rm He}\approx22.8\,\mathrm{nm}$; $\lambda_{\rm Rn}\approx0.0124\,\mathrm{nm}$\\
+5(ii) & Measured wavelengths: H $\approx91.2\,\mathrm{nm}$, He $\approx50.5\,\mathrm{nm}$, Rn $\approx115\,\mathrm{nm}$\\
+6 & FAST $\approx3.3\times10^{11}$ photons/s; equivalent DSLR exposure $\approx22$ min\\
+7 & $a\approx0.0667\,\mathrm{m\,s^{-2}}$; $t\approx1.4$ yr to reach $c/100$\\
+8(i) & $L_\odot\approx3.83\times10^{26}\,\mathrm W$; mass loss $\approx0.07\%$\\
+8(ii)(a) & Sirius irradiance $\approx3.49\times10^4\,\mathrm{W\,m^{-2}}$\\
+8(ii)(b) & $L_S\approx9.82\times10^{27}\,\mathrm W$\\
+8(ii)(c) & Simplified lifetime $\approx8.2\times10^8$ yr\\
+8(iii) & Idealised boiling time $\approx1$ s\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}

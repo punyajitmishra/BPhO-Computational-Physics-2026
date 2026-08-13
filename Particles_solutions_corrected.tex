@@ -1,0 +1,1576 @@
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{listings}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{BPhO Computational Physics Challenge 2026}
+\rhead{High Energy \& Particle Physics}
+\cfoot{\thepage}
+
+\title{\textbf{High Energy \& Particle Physics}\\Worked Solutions}
+\author{BPhO Computational Physics Challenge 2026}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+This document gives worked solutions to the \emph{High Energy \& Particle Physics}
+problem sheet supplied with the BPhO Computational Physics Challenge 2026.
+
+The calculations and conservation-law checks follow the supplied BPhO solution
+document. In particular, the particle-physics notation used here follows the sheet:
+baryon number is $1/3$ for a quark and $-1/3$ for an antiquark, lepton number is
+$+1$ for leptons and $-1$ for antileptons, and antiparticles have the same mass but
+opposite additive quantum numbers.
+
+% ============================================================
+\section{Question 1 --- Particle interactions and conservation laws}
+
+\subsection{(i) Beta-minus decay}
+
+At the quark level,
+\[
+d\rightarrow u+W^-,
+\]
+followed by
+\[
+W^-\rightarrow e^-+\bar{\nu}_e.
+\]
+
+At the first vertex:
+
+\[
+\begin{array}{c|ccc}
+ & Q/e & B & L\\
+\hline
+d & -1/3 & 1/3 & 0\\
+u & +2/3 & 1/3 & 0\\
+W^- & -1 & 0 & 0
+\end{array}
+\]
+
+Hence
+\[
+-\frac13=\frac23-1,
+\qquad
+\frac13=\frac13,
+\qquad
+0=0+0.
+\]
+
+At the second vertex,
+\[
+W^-\rightarrow e^-+\bar{\nu}_e,
+\]
+so
+\[
+-1=-1+0,
+\]
+and
+\[
+L(W^-)=0=1+(-1).
+\]
+
+Thus charge, baryon number and lepton number are all conserved at both vertices.
+
+\subsection{(ii) Beta-plus decay}
+
+The corresponding process is
+\[
+u\rightarrow d+W^+,
+\]
+followed by
+\[
+W^+\rightarrow e^++\nu_e.
+\]
+
+At the first vertex,
+\[
++\frac23=-\frac13+1,
+\qquad
+\frac13=\frac13+0,
+\qquad
+0=0+0.
+\]
+
+At the second vertex,
+\[
++1=+1+0,
+\]
+and
+\[
+0=(-1)+1.
+\]
+
+Therefore
+\[
+\boxed{\text{charge, baryon number and lepton number are conserved at every vertex.}}
+\]
+
+\subsection{(iii) $\pi^+p\rightarrow n+\pi^-+\pi^+$}
+
+Using
+\[
+\pi^+=u\bar d,\qquad
+p=uud,\qquad
+n=udd,\qquad
+\pi^-=d\bar u,
+\]
+the interaction is
+\[
+u\bar d+uud
+\rightarrow
+udd+d\bar u+u\bar d.
+\]
+
+For charge, the left-hand side has
+\[
+Q/e=
+\left(\frac23+\frac13\right)
++
+\left(\frac23+\frac23-\frac13\right)
+=
+1+1=2.
+\]
+
+The right-hand side has
+\[
+0+(-1)+(+1)=0.
+\]
+
+This appears inconsistent if the incoming particle is written as $\pi^+$.
+However, the supplied BPhO solution sheet writes the reaction as
+\[
+\boxed{\pi^-+p\rightarrow n+\pi^-+\pi^+},
+\]
+with quark content
+\[
+\bar ud+uud
+\rightarrow
+udd+\bar ud+u\bar d.
+\]
+
+For this stated reaction,
+\[
+Q_{\rm initial}=-1+1=0,
+\]
+and
+\[
+Q_{\rm final}=0-1+1=0.
+\]
+
+Similarly, the baryon numbers are
+\[
+B_{\rm initial}=0+1=1
+\]
+and
+\[
+B_{\rm final}=1+0+0=1.
+\]
+
+Thus the reaction represented in the supplied solution conserves both charge and
+baryon number.
+
+\subsection{(iv) $K^+\rightarrow\pi^++\pi^0$}
+
+The charged kaon has quark content
+\[
+K^+=u\bar s.
+\]
+
+The charged pion is
+\[
+\pi^+=u\bar d,
+\]
+while the neutral pion is a superposition of
+\[
+u\bar u
+\quad\text{and}\quad
+d\bar d.
+\]
+
+The initial charge is
+\[
+Q(K^+)=+\frac23+\frac13=+1.
+\]
+
+The final charge is
+\[
+Q(\pi^+)+Q(\pi^0)
+=
+(+1)+0
+=+1.
+\]
+
+Therefore
+\[
+\boxed{Q_{\rm initial}=Q_{\rm final}=+e}.
+\]
+
+\subsection{(v) Quark binding energies}
+
+The supplied masses are
+\[
+m_{K^+}=0.52616m_p,
+\qquad
+m_{\pi^+}=0.14875m_p,
+\]
+and
+\[
+m_pc^2=938.27\ \mathrm{MeV}.
+\]
+
+For the kaon,
+\[
+m_{K^+}c^2
+=
+0.52616(938.27)
+=
+493.68\ \mathrm{MeV}.
+\]
+
+The constituent quark masses are
+\[
+m_uc^2=2.4\ \mathrm{MeV},
+\qquad
+m_sc^2=95\ \mathrm{MeV}.
+\]
+
+Define the binding contribution by
+\[
+B=
+\left(m_u+m_s-m_{K^+}\right)c^2.
+\]
+
+Then
+\[
+B_{K^+}
+=
+2.4+95-493.68
+=
+-396.28\ \mathrm{MeV}.
+\]
+
+Hence
+\[
+\boxed{B_{K^+}\approx-396.2\ \mathrm{MeV}}.
+\]
+
+The negative sign indicates that the hadron mass-energy is much lower than the sum
+of the quoted bare quark masses in this simplified constituent picture.
+
+For the pion,
+\[
+m_{\pi^+}c^2
+=
+0.14875(938.27)
+=
+139.57\ \mathrm{MeV}.
+\]
+
+Therefore
+\[
+B_{\pi^+}
+=
+2.4+4.8-139.57
+=
+-132.37\ \mathrm{MeV},
+\]
+so
+\[
+\boxed{B_{\pi^+}\approx-132.4\ \mathrm{MeV}}.
+\]
+
+These should not be interpreted as ordinary potential energies of two free quarks:
+quarks are confined, and the simple subtraction is only the model requested by the
+problem.
+
+\subsection{(vi) $\Sigma^-\rightarrow n+e^-+\bar\nu_e$}
+
+The $\Sigma^-$ has quark content
+\[
+\Sigma^-=dds,
+\]
+while
+\[
+n=udd.
+\]
+
+At quark level, one strange quark changes through the weak interaction:
+\[
+s\rightarrow u+W^-,
+\]
+followed by
+\[
+W^-\rightarrow e^-+\bar\nu_e.
+\]
+
+At the first vertex,
+\[
+-\frac13=\frac23-1,
+\]
+\[
+\frac13=\frac13+0,
+\]
+and lepton number remains zero.
+
+At the second vertex,
+\[
+-1=-1+0
+\]
+and
+\[
+0=1-1.
+\]
+
+Thus all three relevant additive conservation laws hold at each vertex.
+
+\subsection{(vii) Cloud and bubble chambers}
+
+A \textbf{cloud chamber} contains a supersaturated vapour. A charged high-energy
+particle passing through the chamber ionises molecules along its path. The ions act
+as nucleation sites, so droplets condense along the trajectory and form a visible
+track.
+
+A \textbf{bubble chamber} contains a liquid maintained in a superheated state.
+A charged particle ionises the liquid along its path, providing nucleation sites
+for bubbles. The bubbles grow along the trajectory and form a visible track.
+
+A magnetic field can be used with either technique to curve charged-particle tracks,
+allowing the momentum and charge sign to be inferred.
+
+\subsection{(viii) Pair production of muons}
+
+To create a muon--antimuon pair,
+\[
+\gamma\rightarrow\mu^-+\mu^+,
+\]
+the photon must supply at least the two rest-mass energies:
+\[
+E_{\gamma,\min}=2m_\mu c^2.
+\]
+
+With
+\[
+m_\mu c^2=105.66\ \mathrm{MeV},
+\]
+we obtain
+\[
+E_{\gamma,\min}
+=
+2(105.66)
+=
+211.32\ \mathrm{MeV}.
+\]
+
+Using
+\[
+1\ \mathrm{GeV}=1.6\times10^{-10}\ \mathrm J,
+\]
+or equivalently
+\[
+1\ \mathrm{MeV}=1.6\times10^{-13}\ \mathrm J,
+\]
+gives
+\[
+E_{\gamma,\min}
+\approx
+211.32(1.6\times10^{-13})
+=
+3.38\times10^{-11}\ \mathrm J.
+\]
+
+Thus
+\[
+\boxed{E_{\gamma,\min}\approx3.38\times10^{-11}\ \mathrm J}.
+\]
+
+The minimum wavelength follows from
+\[
+E=\frac{hc}{\lambda},
+\]
+so
+\[
+\lambda_{\max}
+=
+\frac{hc}{E_{\gamma,\min}}
+\approx5.88\times10^{-15}\ \mathrm m.
+\]
+
+Therefore
+\[
+\boxed{\lambda_{\max}\approx5.9\ \mathrm{fm}}.
+\]
+
+At threshold the pair is produced with negligible kinetic energy in the idealised
+threshold calculation.
+
+\subsection{(ix) Electron--positron pair moving at $0.8c$}
+
+The total energy of one electron or positron is
+\[
+E=\gamma mc^2,
+\]
+where
+\[
+\gamma=
+\frac{1}{\sqrt{1-u^2/c^2}}.
+\]
+
+For
+\[
+u=0.8c,
+\]
+\[
+\gamma
+=
+\frac{1}{\sqrt{1-0.8^2}}
+=
+\frac53.
+\]
+
+The photon must supply the total energy of both particles:
+\[
+E_\gamma=2\gamma m_ec^2.
+\]
+
+Since
+\[
+m_ec^2=0.51100\ \mathrm{MeV},
+\]
+we find
+\[
+E_\gamma
+=
+2\left(\frac53\right)(0.51100)
+\approx1.70\ \mathrm{MeV}.
+\]
+
+Hence
+\[
+\boxed{E_\gamma\approx1.70\ \mathrm{MeV}}.
+\]
+
+\subsection{(x) Bremsstrahlung shower}
+
+A high-energy electron entering matter is strongly deflected by the electric fields
+of atomic nuclei. Because it is accelerating, it emits bremsstrahlung photons.
+
+A sufficiently energetic photon can then undergo pair production:
+\[
+\gamma\rightarrow e^-+e^+.
+\]
+
+The newly created electron and positron are themselves deflected by nuclei and can
+emit further bremsstrahlung photons. Those photons can again produce pairs.
+
+Schematically,
+\[
+e^-
+\longrightarrow
+e^-+\gamma
+\longrightarrow
+e^-+e^-+e^+
+\longrightarrow
+\text{many }e^\pm+\gamma
+\longrightarrow
+\text{particle shower}.
+\]
+
+The repeated branching produces a cascade of particles. The resulting shower can
+therefore provide an observable signature of the original high-energy electron.
+
+\subsection{(xi) Koide mass ratio for $u,d,s$}
+
+The given relation is
+\[
+\frac{m_u+m_d+m_s}
+{\left(\sqrt{m_u}+\sqrt{m_d}+\sqrt{m_s}\right)^2}
+\approx\frac{k}{9}.
+\]
+
+Using
+\[
+m_u=2.4,\qquad m_d=4.8,\qquad m_s=95
+\]
+in MeV$/c^2$,
+\[
+R_q
+=
+\frac{2.4+4.8+95}
+{\left(\sqrt{2.4}+\sqrt{4.8}+\sqrt{95}\right)^2}.
+\]
+
+Numerically,
+\[
+R_q\approx0.562.
+\]
+
+Therefore
+\[
+k\approx9(0.562)\approx5.06.
+\]
+
+The requested integer is
+\[
+\boxed{k\approx5}.
+\]
+
+% ============================================================
+\section{Question 2 --- Strangeness}
+
+\subsection{(i) Determining the quark content of $K^0$}
+
+The reaction is
+\[
+K^-+p\rightarrow\Omega^-+K^++K^0.
+\]
+
+The $\Omega^-$ has quark content
+\[
+\Omega^-=sss
+\]
+and hence strangeness
+\[
+S=-3.
+\]
+
+The initial $K^-$ has
+\[
+K^-= \bar us,
+\]
+so
+\[
+S_{\rm initial}=-1.
+\]
+
+The proton has
+\[
+S=0.
+\]
+
+The final $K^+$ has
+\[
+K^+=u\bar s
+\]
+and therefore
+\[
+S=+1.
+\]
+
+For strangeness to be conserved, the neutral kaon must supply
+\[
+-1=(-3)+(+1)+S(K^0),
+\]
+giving
+\[
+S(K^0)=+1.
+\]
+
+A neutral meson with strangeness $+1$ must contain an anti-strange quark:
+\[
+K^0=u\bar s.
+\]
+
+Indeed,
+\[
+Q(K^0)=+\frac23+\frac13=+1
+\]
+would not be neutral if interpreted this way, so the neutral state is instead
+\[
+\boxed{K^0=d\bar s},
+\]
+for which
+\[
+Q=-\frac13+\frac13=0,
+\qquad
+S=+1,
+\qquad
+B=0.
+\]
+
+Thus
+\[
+\boxed{K^0=d\bar s}.
+\]
+
+\subsection{(ii) $\Omega^-\rightarrow\Xi^0+\pi^-$}
+
+The quark compositions are
+\[
+\Omega^-=sss,
+\qquad
+\Xi^0=uss,
+\qquad
+\pi^-=d\bar u.
+\]
+
+The weak process can be represented by
+\[
+s\rightarrow u+W^-,
+\]
+followed by
+\[
+W^-\rightarrow d+\bar u.
+\]
+
+The first vertex conserves charge:
+\[
+-\frac13=\frac23-1,
+\]
+and baryon number:
+\[
+\frac13=\frac13+0.
+\]
+
+The second vertex conserves charge:
+\[
+-1=-\frac13-\frac23,
+\]
+and baryon number:
+\[
+0=\frac13-\frac13.
+\]
+
+However, strangeness changes:
+\[
+S(\Omega^-)=-3,
+\]
+while
+\[
+S(\Xi^0)=-2,
+\qquad
+S(\pi^-)=0.
+\]
+
+Thus
+\[
+-3\neq-2.
+\]
+
+Therefore
+\[
+\boxed{\text{strangeness is not conserved in this weak decay}},
+\]
+as expected for a weak interaction.
+
+% ============================================================
+\section{Question 3 --- Tau decay}
+
+\subsection{(i) Feynman diagram}
+
+The decay
+\[
+\tau^-\rightarrow\pi^-+\nu_\tau
+\]
+occurs through
+\[
+\tau^-\rightarrow W^-+\nu_\tau,
+\]
+followed by
+\[
+W^-\rightarrow d+\bar u,
+\]
+which hadronise to form the $\pi^-$.
+
+Thus, schematically,
+\[
+\tau^-
+\longrightarrow
+\nu_\tau+W^-,
+\qquad
+W^-\longrightarrow d+\bar u
+\longrightarrow\pi^-.
+\]
+
+\subsection{(ii) Why is the tau neutrino required?}
+
+The tau lepton has lepton number
+\[
+L_\tau=+1.
+\]
+
+The $W^-$ boson has
+\[
+L_\tau=0.
+\]
+
+Therefore the vertex
+\[
+\tau^-\rightarrow W^-+\nu_\tau
+\]
+requires
+\[
+1=0+1.
+\]
+
+Without the tau neutrino, tau-lepton number would change from $+1$ to $0$.
+
+Hence
+\[
+\boxed{\text{tau lepton number would not be conserved without }\nu_\tau}.
+\]
+
+\subsection{(iii) Kinetic energy of the tau}
+
+The tau has
+\[
+m_\tau c^2=1776.86\ \mathrm{MeV}
+\]
+and speed
+\[
+u=0.2c.
+\]
+
+Its Lorentz factor is
+\[
+\gamma=
+\frac{1}{\sqrt{1-0.2^2}}
+\approx1.02062.
+\]
+
+The total energy is
+\[
+E_\tau=\gamma m_\tau c^2.
+\]
+
+The kinetic energy is
+\[
+K_\tau=(\gamma-1)m_\tau c^2.
+\]
+
+Therefore
+\[
+K_\tau
+=
+(1.02062-1)(1776.86)
+\approx36.64\ \mathrm{MeV}.
+\]
+
+Thus
+\[
+\boxed{K_\tau\approx36.6\ \mathrm{MeV}}.
+\]
+
+\subsection{(iv) Energy of the tau neutrino}
+
+The pion has speed
+\[
+u_\pi=0.99c.
+\]
+
+Its mass is given by
+\[
+m_\pi c^2
+=
+0.14875m_pc^2
+=
+0.14875(938.27)
+\approx139.57\ \mathrm{MeV}.
+\]
+
+Its Lorentz factor is
+\[
+\gamma_\pi
+=
+\frac{1}{\sqrt{1-0.99^2}}
+\approx7.0888.
+\]
+
+Therefore
+\[
+E_\pi
+=
+\gamma_\pi m_\pi c^2
+\approx989.37\ \mathrm{MeV}.
+\]
+
+The tau total energy is
+\[
+E_\tau
+=
+\gamma_\tau m_\tau c^2
+\approx1813.50\ \mathrm{MeV}.
+\]
+
+Assuming the tau neutrino is effectively massless,
+\[
+E_{\nu_\tau}
+=
+E_\tau-E_\pi.
+\]
+
+Hence
+\[
+E_{\nu_\tau}
+\approx1813.50-989.37
+=
+824.13\ \mathrm{MeV}.
+\]
+
+Thus
+\[
+\boxed{E_{\nu_\tau}\approx824.1\ \mathrm{MeV}}.
+\]
+
+\subsection{(v) Relativistic energy--momentum invariant}
+
+The relativistic momentum is
+\[
+p=\gamma mv
+=
+\left(1-\frac{v^2}{c^2}\right)^{-1/2}mv.
+\]
+
+The total energy is
+\[
+E=\gamma mc^2.
+\]
+
+Therefore
+\[
+E^2-p^2c^2
+=
+\gamma^2m^2c^4
+-
+\gamma^2m^2v^2c^2.
+\]
+
+Factoring,
+\[
+E^2-p^2c^2
+=
+\gamma^2m^2c^4
+\left(1-\frac{v^2}{c^2}\right).
+\]
+
+Since
+\[
+\gamma^2=
+\frac{1}{1-v^2/c^2},
+\]
+we obtain
+\[
+\boxed{E^2-p^2c^2=m^2c^4}.
+\]
+
+For an effectively massless tau neutrino,
+\[
+m_{\nu_\tau}\approx0,
+\]
+so
+\[
+E_\nu^2-p_\nu^2c^2=0.
+\]
+
+Hence
+\[
+E_\nu=p_\nu c,
+\]
+or
+\[
+p_\nu=\frac{E_\nu}{c}.
+\]
+
+Using
+\[
+E_\nu=824.13\ \mathrm{MeV},
+\]
+\[
+\boxed{p_\nu\approx824.1\ \mathrm{MeV}/c}.
+\]
+
+In SI units,
+\[
+p_\nu
+=
+\frac{824.13\times10^6(1.602\times10^{-19})}
+{2.998\times10^8}
+\approx4.40\times10^{-19}\ \mathrm{kg\,m\,s^{-1}}.
+\]
+
+Thus
+\[
+\boxed{p_\nu\approx4.40\times10^{-19}\ \mathrm{kg\,m\,s^{-1}}}.
+\]
+
+\subsection{(vi) Koide formulae}
+
+For the charged leptons,
+\[
+R_\ell
+=
+\frac{m_e+m_\mu+m_\tau}
+{\left(\sqrt{m_e}+\sqrt{m_\mu}+\sqrt{m_\tau}\right)^2}.
+\]
+
+Using
+\[
+m_e=0.51100,\qquad
+m_\mu=105.66,\qquad
+m_\tau=1776.86
+\]
+in MeV$/c^2$,
+\[
+R_\ell\approx0.66666.
+\]
+
+Thus
+\[
+\boxed{R_\ell\approx\frac23}.
+\]
+
+For the quarks,
+\[
+R_q
+=
+\frac{m_c+m_b+m_t}
+{\left(\sqrt{m_c}+\sqrt{m_b}+\sqrt{m_t}\right)^2}.
+\]
+
+Using
+\[
+m_c=1275,\qquad
+m_b=4180,\qquad
+m_t=172440
+\]
+in MeV$/c^2$,
+\[
+R_q\approx0.669.
+\]
+
+Thus
+\[
+\boxed{R_q\approx\frac23}.
+\]
+
+The numerical closeness of both expressions to $2/3$ is the empirical pattern
+highlighted by the problem.
+
+% ============================================================
+\section{Question 4 --- Compton scattering}
+
+Consider an incident photon of wavelength $\lambda$ scattering through angle
+$\theta$ from an initially stationary electron.
+
+The Compton wavelength shift is
+\[
+\boxed{
+\Delta\lambda
+=
+\lambda'-\lambda
+=
+\frac{h}{m_ec}(1-\cos\theta)
+}.
+\]
+
+The following derivation obtains this result from relativistic energy--momentum
+conservation.
+
+\subsection{(i) Photon momentum and the de Broglie relation}
+
+For any particle,
+\[
+E^2-p^2c^2=m^2c^4.
+\]
+
+For a photon,
+\[
+m=0,
+\]
+so
+\[
+E^2=p^2c^2.
+\]
+
+Since $E>0$,
+\[
+E=pc.
+\]
+
+Planck's relation gives
+\[
+E=hf=\frac{hc}{\lambda}.
+\]
+
+Therefore
+\[
+pc=\frac{hc}{\lambda},
+\]
+and hence
+\[
+\boxed{p=\frac h\lambda}.
+\]
+
+This is the photon form of the de Broglie relation.
+
+\subsection{(ii) Momentum conservation}
+
+Before the collision, the photon momentum is
+\[
+p_\lambda=\frac h\lambda.
+\]
+
+After scattering,
+\[
+p_{\lambda'}=\frac h{\lambda'}.
+\]
+
+Momentum conservation gives
+\[
+\vec p_\lambda
+=
+\vec p_{\lambda'}+\vec p_e.
+\]
+
+Therefore
+\[
+\vec p_e
+=
+\vec p_\lambda-\vec p_{\lambda'}.
+\]
+
+Taking the magnitude and applying the cosine rule,
+\[
+\boxed{
+p_e^2
+=
+p_\lambda^2+p_{\lambda'}^2
+-2p_\lambda p_{\lambda'}\cos\theta
+}.
+\]
+
+\subsection{(iii) Electron momentum from energy conservation}
+
+Initially the electron is at rest, so its energy is
+\[
+E_{e,i}=m_ec^2.
+\]
+
+Energy conservation gives
+\[
+m_ec^2+p_\lambda c
+=
+E_e+p_{\lambda'}c.
+\]
+
+Hence
+\[
+E_e
+=
+m_ec^2+c(p_\lambda-p_{\lambda'}).
+\]
+
+For the recoiling electron,
+\[
+E_e^2-p_e^2c^2=m_e^2c^4.
+\]
+
+Substitute the expression for $E_e$:
+\[
+p_e^2c^2
+=
+\left[m_ec^2+c(p_\lambda-p_{\lambda'})\right]^2
+-m_e^2c^4.
+\]
+
+Expanding and dividing by $c^2$,
+\[
+p_e^2
+=
+(p_\lambda-p_{\lambda'})^2
++
+2m_ec(p_\lambda-p_{\lambda'}).
+\]
+
+Thus
+\[
+\boxed{
+p_e^2
+=
+(p_\lambda-p_{\lambda'})^2
++
+2m_ec(p_\lambda-p_{\lambda'})
+}.
+\]
+
+\subsection{(iv) Derivation of the Compton shift}
+
+Equating the two expressions for $p_e^2$ gives
+\[
+p_\lambda^2+p_{\lambda'}^2
+-2p_\lambda p_{\lambda'}\cos\theta
+=
+(p_\lambda-p_{\lambda'})^2
++
+2m_ec(p_\lambda-p_{\lambda'}).
+\]
+
+Since
+\[
+(p_\lambda-p_{\lambda'})^2
+=
+p_\lambda^2+p_{\lambda'}^2
+-2p_\lambda p_{\lambda'},
+\]
+we obtain
+\[
+2p_\lambda p_{\lambda'}(1-\cos\theta)
+=
+2m_ec(p_\lambda-p_{\lambda'}).
+\]
+
+Therefore
+\[
+p_\lambda p_{\lambda'}(1-\cos\theta)
+=
+m_ec(p_\lambda-p_{\lambda'}).
+\]
+
+Using
+\[
+p_\lambda=\frac h\lambda,
+\qquad
+p_{\lambda'}=\frac h{\lambda'},
+\]
+gives
+\[
+\frac{h^2}{\lambda\lambda'}(1-\cos\theta)
+=
+m_ec
+\left(
+\frac h\lambda-\frac h{\lambda'}
+\right).
+\]
+
+Multiplying through by $\lambda\lambda'/h$,
+\[
+\frac h{m_ec}(1-\cos\theta)
+=
+\lambda'-\lambda.
+\]
+
+Thus
+\[
+\boxed{
+\Delta\lambda
+=
+\lambda'-\lambda
+=
+\frac h{m_ec}(1-\cos\theta)
+}.
+\]
+
+\subsection{(v) Maximum wavelength shift and a 10\% maximum-shift photon}
+
+The shift is greatest when
+\[
+1-\cos\theta
+\]
+is greatest. Since
+\[
+-1\le\cos\theta\le1,
+\]
+the maximum occurs at
+\[
+\boxed{\theta=180^\circ}.
+\]
+
+Thus
+\[
+\Delta\lambda_{\max}
+=
+\frac{2h}{m_ec}.
+\]
+
+The problem asks for an incident X-ray whose fractional wavelength shift is
+$10\%$ of this maximum:
+\[
+\frac{\Delta\lambda_{\max}}{\lambda}=0.1.
+\]
+
+Therefore
+\[
+\frac{2h}{m_ec\lambda}=0.1.
+\]
+
+Using
+\[
+E_\gamma=\frac{hc}{\lambda},
+\]
+we have
+\[
+\frac{\Delta\lambda_{\max}}{\lambda}
+=
+\frac{2E_\gamma}{m_ec^2}.
+\]
+
+Hence
+\[
+0.1=\frac{2E_\gamma}{m_ec^2},
+\]
+so
+\[
+E_\gamma
+=
+0.05m_ec^2.
+\]
+
+With
+\[
+m_ec^2=511\ \mathrm{keV},
+\]
+\[
+E_\gamma
+=
+0.05(511)
+=
+25.55\ \mathrm{keV}.
+\]
+
+Thus
+\[
+\boxed{E_\gamma\approx25.6\ \mathrm{keV}}.
+\]
+
+\subsection{(vi) Electron recoil angle and speed}
+
+Resolve momentum conservation into components.
+
+Taking the incident photon direction as the $x$-axis,
+\[
+p_\lambda
+=
+p_{\lambda'}\cos\theta+p_e\cos\phi,
+\]
+and
+\[
+0
+=
+p_{\lambda'}\sin\theta-p_e\sin\phi.
+\]
+
+Therefore
+\[
+p_e\sin\phi
+=
+p_{\lambda'}\sin\theta,
+\]
+and
+\[
+p_e\cos\phi
+=
+p_\lambda-p_{\lambda'}\cos\theta.
+\]
+
+Dividing,
+\[
+\tan\phi
+=
+\frac{p_{\lambda'}\sin\theta}
+{p_\lambda-p_{\lambda'}\cos\theta}.
+\]
+
+Since
+\[
+\frac{p_\lambda}{p_{\lambda'}}
+=
+\frac{\lambda'}{\lambda},
+\]
+and
+\[
+\frac{\lambda'}{\lambda}
+=
+1+\frac{h}{m_ec\lambda}(1-\cos\theta),
+\]
+we obtain
+\[
+\boxed{
+\tan\phi
+=
+\frac{\sin\theta}
+{1+\dfrac{h}{m_ec\lambda}(1-\cos\theta)-\cos\theta}
+}.
+\]
+
+The electron momentum can be written as
+\[
+\boxed{
+p_e=
+\sqrt{
+(p_\lambda-p_{\lambda'})^2
++
+2m_ec(p_\lambda-p_{\lambda'})
+}
+}.
+\]
+
+Using
+\[
+p_\lambda=\frac h\lambda,
+\qquad
+p_{\lambda'}=\frac h{\lambda'},
+\]
+and
+\[
+\lambda'
+=
+\lambda+
+\frac{h}{m_ec}(1-\cos\theta),
+\]
+this gives $p_e$ entirely in terms of $\lambda$, $\theta$ and the constants.
+
+The relativistic momentum relation is
+\[
+p_e=\gamma m_ev
+=
+\left(1-\frac{v^2}{c^2}\right)^{-1/2}m_ev.
+\]
+
+Solving for $v$,
+\[
+\boxed{
+v
+=
+c\left[
+\left(\frac{m_ec}{p_e}\right)^2+1
+\right]^{-1/2}
+}.
+\]
+
+\subsection{(vii) Maximum electron recoil speed}
+
+The maximum wavelength shift occurs for
+\[
+\theta=180^\circ.
+\]
+
+At this angle,
+\[
+\lambda'
+=
+\lambda+\frac{2h}{m_ec}.
+\]
+
+The scattered photon therefore has the minimum possible momentum
+\[
+p_{\lambda'}=\frac h{\lambda'},
+\]
+so the difference
+\[
+p_\lambda-p_{\lambda'}
+\]
+is maximised. From
+\[
+p_e^2
+=
+(p_\lambda-p_{\lambda'})^2
++
+2m_ec(p_\lambda-p_{\lambda'}),
+\]
+the electron momentum is consequently maximised.
+
+Energy conservation gives
+\[
+\frac{hc}{\lambda}+m_ec^2
+=
+\frac{hc}{\lambda'}
++
+\gamma m_ec^2.
+\]
+
+Thus
+\[
+\gamma
+=
+1+
+\frac{h}{m_ec}
+\left(
+\frac1\lambda-\frac1{\lambda'}
+\right).
+\]
+
+Since
+\[
+\gamma=\frac{1}{\sqrt{1-v^2/c^2}},
+\]
+we obtain
+\[
+\boxed{
+v_{\max}
+=
+c\sqrt{
+1-
+\left[
+\frac{m_ec^2}
+{m_ec^2+\dfrac{hc}{\lambda}-\dfrac{hc}{\lambda'}}
+\right]^2
+}
+},
+\]
+with
+\[
+\boxed{
+\lambda'
+=
+\lambda+\frac{2h}{m_ec}
+}.
+\]
+
+\subsection{(viii) Computational plots}
+
+The problem asks for graphs of the fractional wavelength shift,
+electron recoil speed and electron recoil angle as functions of the photon
+scattering angle $\theta$.
+
+The quantities can be calculated directly from the preceding equations.
+
+For an incident photon energy $E$,
+\[
+\lambda=\frac{hc}{E},
+\]
+and
+\[
+\boxed{
+\frac{\Delta\lambda}{\lambda}
+=
+\frac{E}{m_ec^2}(1-\cos\theta)
+}.
+\]
+
+The scattered wavelength is
+\[
+\lambda'
+=
+\lambda+\frac{h}{m_ec}(1-\cos\theta),
+\]
+so
+\[
+p_\lambda=\frac h\lambda,
+\qquad
+p_{\lambda'}=\frac h{\lambda'}.
+\]
+
+The recoil momentum is
+\[
+\boxed{
+p_e
+=
+\sqrt{
+(p_\lambda-p_{\lambda'})^2
++
+2m_ec(p_\lambda-p_{\lambda'})
+}
+}.
+\]
+
+The recoil speed is then
+\[
+\boxed{
+v
+=
+c\left[
+1+\left(\frac{m_ec}{p_e}\right)^2
+\right]^{-1/2}
+}.
+\]
+
+Finally,
+\[
+\boxed{
+\tan\phi
+=
+\frac{\sin\theta}
+{1+\dfrac{h}{m_ec\lambda}(1-\cos\theta)-\cos\theta}
+}.
+\]
+
+A minimal Python implementation of the required numerical model is:
+
+\begin{lstlisting}[language=Python,basicstyle=\ttfamily\small,frame=single]
+import numpy as np
+import matplotlib.pyplot as plt
+
+h = 6.62607015e-34
+c = 2.99792458e8
+me = 9.1093837e-31
+
+theta = np.linspace(1e-6, np.pi, 1000)
+
+for E_keV in (10, 50, 100):
+    E = E_keV * 1e3 * 1.602176634e-19
+    lam = h*c/E
+    lam_p = lam + h/(me*c)*(1 - np.cos(theta))
+
+    p = h/lam
+    pp = h/lam_p
+
+    dp = p - pp
+    pe = np.sqrt(dp**2 + 2*me*c*dp)
+
+    fractional_shift = (lam_p - lam)/lam
+    v = c / np.sqrt(1 + (me*c/pe)**2)
+
+    phi = np.arctan2(
+        np.sin(theta),
+        1 + h/(me*c*lam)*(1 - np.cos(theta)) - np.cos(theta)
+    )
+
+    # fractional_shift, v/c and phi are the three requested quantities
+\end{lstlisting}
+
+The three requested plots are therefore generated from
+\[
+\frac{\Delta\lambda}{\lambda}(\theta),
+\qquad
+\frac{v}{c}(\theta),
+\qquad
+\phi(\theta),
+\]
+for one or more chosen incident photon energies.
+
+% ============================================================
+\section*{Summary}
+
+The particle-physics sheet connects several central ideas:
+
+\begin{itemize}
+    \item conservation of charge, baryon number, lepton number and, where
+    appropriate, strangeness;
+    \item quark-level descriptions of weak decays;
+    \item relativistic energy and momentum;
+    \item pair production and particle showers;
+    \item the empirical Koide mass relation;
+    \item the energy--momentum invariant
+    \[
+    E^2-p^2c^2=m^2c^4;
+    \]
+    \item and the particle description of light through Compton scattering.
+\end{itemize}
+
+The Compton-scattering problem in particular leads naturally to the computational
+model requested in the final part of the sheet: once the incident photon energy is
+specified, the wavelength shift, recoil momentum, recoil speed and recoil angle can
+all be evaluated numerically as functions of the scattering angle.
+
+\end{document}
